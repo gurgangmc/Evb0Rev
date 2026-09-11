@@ -1,0 +1,36 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command captain:
+	aliases: palace
+	permission: evb0.captain.tp
+	permission message: &cThis command is for Captain+ only.
+	cooldown: 60 seconds
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		teleport player to {location::captain}
+		send "&eTeleported to the Palace!" to player
+
+command champion:
+	permission: evb0.captain.tp
+	permission message: &cThis command is for The Parkour Champion only.
+	cooldown: 60 seconds
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		teleport player to {location::captain}
+		send "&eTeleported to the Palace!" to player
+
+command captain:setspawn:
+	permission: op
+	trigger:
+		set {location::captain} to player's location
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

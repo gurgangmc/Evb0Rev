@@ -1,0 +1,51 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on right click on crimson wall sign:
+	if region at event-block contains "noob-shop":
+		cancel event
+		set metadata tag "NoobShop" of player to chest inventory with 3 rows named "&eNoob Shop"
+		set {_inv} to metadata tag "NoobShop" of player
+		loop 27 times:
+			set slot loop-value - 1 of {_inv} to gray stained glass pane named " "
+		loop 7 times:
+			set slot loop-value + 9 of {_inv} to air
+		set slot 10 of {_inv} to chicken with lore "&7Costs 500 Jumps", " " and "&aClick to purchase"
+		set slot 11 of {_inv} to beef with lore "&7Costs 750 Jumps", " " and "&aClick to purchase"
+		set slot 22 of {_inv} to leather boots named "<#5454fc>Your Jumps: &r%{jumps::%uuid of player%} ? 0%"
+		open (metadata tag "NoobShop" of player) to player
+	
+on inventory click:
+	if event-inventory = (metadata tag "NoobShop" of player):
+		cancel event
+		set {_inv} to metadata tag "NoobShop" of player
+		if event-slot is 10:
+			if {jumps::%uuid of player%} >= 500:
+				give player 1 chicken
+				remove 500 from {jumps::%uuid of player%}
+				add 1 to {shop::purchases::%uuid of player%}
+				send "&8[&eNOOB SHOP&8] &rPurchased &eRaw Chicken &rfor &e500 Jumps&r!"
+				set slot 22 of {_inv} to leather boots named "<#5454fc>Your Jumps: &r%{jumps::%uuid of player%} ? 0%"
+			else:
+				send "&cYou cannot afford this!"
+			stop
+		if event-slot is 11:
+			if {jumps::%uuid of player%} >= 750:
+				give player 1 beef
+				remove 750 from {jumps::%uuid of player%}
+				add 1 to {shop::purchases::%uuid of player%}
+				send "&8[&eNOOB SHOP&8] &rPurchased &eRaw beed &rfor &e750 Jumps&r!"
+				set slot 22 of {_inv} to leather boots named "<#5454fc>Your Jumps: &r%{jumps::%uuid of player%} ? 0%"
+			else:
+				send "&cYou cannot afford this!"
+			stop
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

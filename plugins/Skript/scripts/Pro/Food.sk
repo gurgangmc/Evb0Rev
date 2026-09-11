@@ -1,0 +1,30 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command steak:
+	permission: evb0.pro.food
+	cooldown: 2 minute
+	cooldown message: &cPlease wait %remaining time% before using this command again!
+	trigger:
+		give player 2 cooked beef
+		send "&eYou recieved 2 steak!"
+		
+command noobfood:
+	permission: evb0.pro.food
+	cooldown: 2 minute
+	cooldown message: &cPlease wait %remaining time% before using this command again!
+	trigger:
+		give player 1 beef
+		give player 1 chicken
+		send "Feed the noobs this food! For chicken, make them do a 1 block jump. For beef, a 1 block jump onto an oak log."
+		
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

@@ -1,0 +1,121 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command evb0rev-settings:
+    aliases: settings-evb0rev, settings, settings-evbo, evbo-settings
+    trigger:
+        set metadata tag "Settings" of player to chest inventory with 5 rows named "&7&lSettings &8- &7Page 1"
+        set {_inv} to metadata tag "Settings" of player
+        loop 45 times:
+            set slot loop-value - 1 of {_inv} to gray stained glass pane named " "
+        set slot 40 of {_inv} to nether star named "&7&lSettings"
+        if {pings::%uuid of player%} is not set:
+            set slot 10 of {_inv} to glowingItem(green dye named "&7Recieve Chat Pings: &aOn" with lore "&aClick to toggle" and "&8>> &7You will recieve ping sounds.")
+        else if {pings::%uuid of player%} is "noob":
+            set slot 10 of {_inv} to leather boots named "&7Recieve Chat Pings: Noobs Only" with lore "&aClick to toggle" and "&8>> &7You will recieve ping sounds from Noobs."
+        else if {pings::%uuid of player%} is "pro":
+            set slot 10 of {_inv} to iron boots named "&7Recieve Chat Pings: &rPros Only" with lore "&aClick to toggle" and "&8>> &7You will recieve ping sounds from &rPros."
+        else if {pings::%uuid of player%} is "master":
+            set slot 10 of {_inv} to iron boots named "&7Recieve Chat Pings: &6Masters Only" with lore "&aClick to toggle" and "&8>> &7You will recieve ping sounds from &6Masters."
+        else if {pings::%uuid of player%} is "noone":
+            set slot 10 of {_inv} to barrier named "&7Recieve Chat Pings: &cOff" with lore "&aClick to toggle" and "&8>> &7You will not recieve ping sounds."
+        if {scoreboard::%uuid of player%} is not set:
+            set slot 12 of {_inv} to glowingItem(green dye named "&7Scoreboard visibility: &aOn" with lore "&aClick to toggle" and "&8>> &7Visibility of scoreboard (on the right).")
+        else:
+            set slot 12 of {_inv} to gray dye named "&7Scoreboard visibility: &cOff" with lore "&aClick to toggle" and "&8>> &7Visibility of scoreboard (on the right)."
+        if {visibility::%uuid of player%} is not set:
+            set slot 14 of {_inv} to glowingItem(green dye named "&7Player visibility: &aOn" with lore "&aClick to toggle" and "&8>> &7Visibility of Players.")
+        else:
+            set slot 14 of {_inv} to gray dye named "&7Player visibility: &cOff" with lore "&aClick to toggle" and "&8>> &7Visibility of Players."
+        if {itemlock::%uuid of player%} is not set:
+            set slot 16 of {_inv} to gray dye named "&7Locked Items: &cOff" with lore "&aClick to toggle" and "&8>> &7You must press the drop key twice to drop an item."
+        else:
+            set slot 16 of {_inv} to glowingItem(green dye named "&7Locked Items: &aOn" with lore "&aClick to toggle" and "&8>> &7You must press the drop key twice to drop an item.")
+        if {tips::%uuid of player%} is not set:
+            set slot 28 of {_inv} to glowingItem(green dye named "&7Periodical tips: &aOn" with lore "&aClick to toggle" and "&8>> &7Periodical tips sent in chat every 5 minutes.")
+        else:
+            set slot 28 of {_inv} to gray dye named "&7Periodical tips: &cOff" with lore "&aClick to toggle" and "&8>> &7Periodical tips sent in chat every 5 minutes."
+        if {subrank::grandmaster::%uuid of player%} is set:
+            if {keeprank::%uuid of player%} is set:
+                set slot 30 of {_inv} to glowingItem(golden boots named "&7Grandmaster Keep Rank: &aOn" with lore "&aClick to toggle" and "&8>> &7Keep your rank as a grandmaster.")
+            else:
+                set slot 30 of {_inv} to chainmail boots named "&7Grandmaster Keep Rank: &cOff" with lore "&aClick to toggle" and "&8>> &7Keep your rank as a grandmaster."
+        else:
+            set slot 30 of {_inv} to barrier named "&7Grandmaster Keep Rank: &cUNAVAILABLE" with lore "&cYou must be Grandmaster+ to use this!" and "&8>> &7Keep your rank as a grandmaster."
+            
+        open {_inv} to player
+
+on inventory click:
+    if name of event-inventory is "&7&lSettings &8- &7Page 1":
+        cancel event
+        set {_uuid} to uuid of player
+        set {_inv} to metadata tag "Settings" of player
+        set {_slot} to index of event-slot
+
+        if {_slot} is 10:
+            if {pings::%{_uuid}%} is not set:
+                set {pings::%{_uuid}%} to "noob"
+                set slot 10 of {_inv} to leather boots named "&7Recieve Chat Pings: Noobs Only" with lore "&aClick to toggle" and "&8>> &7You will recieve ping sounds from Noobs."
+            else if {pings::%{_uuid}%} is "noob":
+                set {pings::%{_uuid}%} to "pro"
+                set slot 10 of {_inv} to iron boots named "&7Recieve Chat Pings: &rPros Only" with lore "&aClick to toggle" and "&8>> &7You will recieve ping sounds from &rPros."
+            else if {pings::%{_uuid}%} is "pro":
+                set {pings::%{_uuid}%} to "master"
+                set slot 10 of {_inv} to iron boots named "&7Recieve Chat Pings: &6Masters Only" with lore "&aClick to toggle" and "&8>> &7You will recieve ping sounds from &6Masters."
+            else if {pings::%{_uuid}%} is "master":
+                set {pings::%{_uuid}%} to "noone"
+                set slot 10 of {_inv} to barrier named "&7Recieve Chat Pings: &cOff" with lore "&aClick to toggle" and "&8>> &7You will not recieve ping sounds."
+            else if {pings::%{_uuid}%} is "noone":
+                delete {pings::%{_uuid}%}
+                set slot 10 of {_inv} to glowingItem(green dye named "&7Recieve Chat Pings: &aOn" with lore "&aClick to toggle" and "&8>> &7You will recieve ping sounds.")
+
+        if {_slot} is 12:
+            if {scoreboard::%{_uuid}%} is not set:
+                set {scoreboard::%{_uuid}%} to "off"
+                set slot 12 of {_inv} to gray dye named "&7Scoreboard visibility: &cOff" with lore "&aClick to toggle" and "&8>> &7Visibility of scoreboard (on the right)."
+            else:
+                delete {scoreboard::%{_uuid}%}
+                set slot 12 of {_inv} to glowingItem(green dye named "&7Scoreboard visibility: &aOn" with lore "&aClick to toggle" and "&8>> &7Visibility of scoreboard (on the right).")
+
+        if {_slot} is 14:
+            if {visibility::%{_uuid}%} is not set:
+                set {visibility::%{_uuid}%} to "off"
+                set slot 14 of {_inv} to gray dye named "&7Player visibility: &cOff" with lore "&aClick to toggle" and "&8>> &7Visibility of Players."
+            else:
+                delete {visibility::%{_uuid}%}
+                set slot 14 of {_inv} to glowingItem(green dye named "&7Player visibility: &aOn" with lore "&aClick to toggle" and "&8>> &7Visibility of Players.")
+
+        if {_slot} is 16:
+            if {itemlock::%{_uuid}%} is not set:
+                set {itemlock::%{_uuid}%} to "on"
+                set slot 16 of {_inv} to glowingItem(green dye named "&7Locked Items: &aOn" with lore "&aClick to toggle" and "&8>> &7You must press the drop key twice to drop an item.")
+            else:
+                delete {itemlock::%{_uuid}%}
+                set slot 16 of {_inv} to gray dye named "&7Locked Items: &cOff" with lore "&aClick to toggle" and "&8>> &7You must press the drop key twice to drop an item."
+
+        if {_slot} is 28:
+            if {tips::%{_uuid}%} is not set:
+                set {tips::%{_uuid}%} to "off"
+                set slot 28 of {_inv} to gray dye named "&7Periodical tips: &cOff" with lore "&aClick to toggle" and "&8>> &7Periodical tips sent in chat every 5 minutes."
+            else:
+                delete {tips::%{_uuid}%}
+                set slot 28 of {_inv} to glowingItem(green dye named "&7Periodical tips: &aOn" with lore "&aClick to toggle" and "&8>> &7Periodical tips sent in chat every 5 minutes.")
+
+        if {_slot} is 30:
+            if {subrank::grandmaster::%uuid of player%} is set:
+                if {keeprank::%{_uuid}%} is not set:
+                    set {keeprank::%{_uuid}%} to true
+                    set slot 30 of {_inv} to glowingItem(golden boots named "&7Grandmaster Keep Rank: &aOn" with lore "&aClick to toggle" and "&8>> &7Keep your rank as a grandmaster.")
+                else:
+                    delete {keeprank::%{_uuid}%}
+                    set slot 30 of {_inv} to chainmail boots named "&7Grandmaster Keep Rank: &cOff" with lore "&aClick to toggle" and "&8>> &7Keep your rank as a grandmaster."
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

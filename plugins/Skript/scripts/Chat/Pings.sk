@@ -1,0 +1,27 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on chat:
+	set {_msg} to message
+	loop all players:
+		message contains name of loop-player
+		if {vanish::%uuid of loop-player%} is not set:
+			if {ranks::%uuid of loop-player%} is "god":
+				replace all "%loop-player%" with "&a@%loop-player%%{colorchat::%uuid of player%} ? "&r"%" in {_msg}
+			else:
+				replace all "%loop-player%" with "&b@%loop-player%%{colorchat::%uuid of player%} ? "&r"%" in {_msg}
+			if {pings::%uuid of loop-player%} is not set:
+				play sound "entity.experience_orb.pickup" with volume 0.5 to loop-player
+			if {pings::%uuid of loop-player%} is {ranks::%uuid of player%}:
+				play sound "entity.experience_orb.pickup" with volume 0.5 to loop-player
+			set message to {_msg}
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

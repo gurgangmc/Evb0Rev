@@ -1,0 +1,76 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command master:
+	permission: evb0.master.teleport
+	cooldown: 60 seconds
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		teleport player to {location::master}
+		send "&eTeleported to Master level!" to player
+		
+command master:setspawn:
+	permission: op
+	trigger:
+		set {location::mastersecrettp} to player's location
+
+command casino:
+	permission: evb0.master.teleport
+	cooldown: 60 seconds
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		teleport player to {location::casino}
+		send "&eTeleported to Master level!" to player
+		
+command casino:setspawn:
+	permission: op
+	trigger:
+		set {location::casino} to player's location
+
+command arena:
+	permission: evb0.master.teleport
+	cooldown: 60 seconds
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		teleport player to {location::arena}
+		send "&eTeleported to the Arena!" to player
+		
+command arena:setspawn:
+	permission: op
+	trigger:
+		set {location::arena} to player's location
+
+on step on blue concrete:
+	region at event-block is "masterspawntp"
+	if player has permission "evb0.master.tp":
+		teleport player to {location::masterspawntp}
+	else:
+		send "&c[ALERT] &7%player% &rmay be hacking!!!" to all players where [input has permission "staff.rank"]
+		stop
+
+on step on light blue concrete:
+	region at event-block is "masterrankuptp"
+	if player has permission "evb0.master.tp":
+		teleport player to {location::masterrankuptp}
+	else:
+		send "&c[ALERT] &7%player% &rmay be hacking!!!" to all players where [input has permission "staff.rank"]
+		stop
+
+on step on smooth quartz slab:
+	region at event-block is "mastersecrettp"
+	if player has permission "evb0.master.tp":
+		teleport player to {location::mastersecrettp}
+		send "&6[Secret] &rYou found the &6&n&oPanini Laboratory&r!" to player
+	else:
+		send "&c[ALERT] &7%player% &rmay be hacking!!!" to all players where [input has permission "staff.rank"]
+		stop
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

@@ -1,0 +1,25 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command event-lobby:
+	permission: evb0.noob.tp
+	cooldown: 60 seconds
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		teleport player to {location::event-lobby}
+		send "&eTeleported to Event Lobby!" to player
+		
+command event:setspawn:
+	permission: op
+	trigger:
+		set {location::event-lobby} to player's location
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

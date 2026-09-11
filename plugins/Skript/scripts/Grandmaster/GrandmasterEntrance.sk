@@ -1,0 +1,32 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on region enter:
+	if event-region is "grandmasterentry":
+	
+		if {achievement::temple::speed::%uuid of player%} is set:
+			add 1 to {_pass}
+		if {achievement::temple::momentum::%uuid of player%} is set:
+			add 1 to {_pass}
+		if {achievement::temple::agility::%uuid of player%} is set:
+			add 1 to {_pass}
+		if {achievement::temple::endurance::%uuid of player%} is set:
+			add 1 to {_pass}
+		if {_pass} is not set:
+			push player north at speed 2
+			send title "&c&lFORBIDDEN!" with subtitle "&7You must complete at least one temple first!"
+			stop
+		if {_pass} < 1:
+			push player north at speed 2
+			send title "&c&lFORBIDDEN!" with subtitle "&7You must complete at least one temple first!"
+			stop
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

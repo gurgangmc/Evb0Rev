@@ -1,0 +1,86 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on region enter:
+    set {_rg} to "%event-region%"
+    replace all "-" with " " in {_rg}
+    if {_rg} contains "build":
+        if {build::in::%uuid of player%} is set:
+            stop
+        set {build::in::%uuid of player%} to true
+        if {_rg} contains "priv":
+            send title "&6Private Practice" with subtitle "&7Welcome to Private Practice!" to player
+        else if {_rg} contains "palace":
+            send title "&bPalace" with subtitle "&7Welcome to the Palace!" to player
+        else:
+            send title "&aPractice" with subtitle "&7Welcome to Parkour Practice!" to player
+        if player has permission "build.gamemode.bypass":
+            fb_give_of_type(player, oak planks)
+            send action bar "&7You have an &eInfinity Plank&7 to practive with. Shift Left click to shift blocks"
+            if player's gamemode is adventure:
+                set player's gamemode to survival
+            stop
+        if {build::blacklist::%{_u}%} is set:
+            send "&cYou have been blacklisted! &7/appeal to appeal." to player
+            stop
+
+        if {build::whitelist::enabled} is set:
+            if {build::whitelist::players::%uuid of player%} is set:
+                set player's gamemode to survival
+                fb_give_of_type(player, oak planks)
+                send action bar "&7You have an &eInfinity Plank&7 to practive with. Shift Left click to shift blocks" to player
+                stop
+            else:
+                stop
+        
+
+        if {_rg} contains "palace":
+            if player has permission "evb0.captain.build":
+                set player's gamemode to survival
+                fb_give_of_type(player, oak planks)
+                send action bar "&7You have an &eInfinity Plank&7 to practive with. Shift Left click to shift blocks"
+            else:
+                stop
+        if {_rg} contains "priv":
+            if player has permission "evb0.master.build":
+                set player's gamemode to survival
+                fb_give_of_type(player, oak planks)
+                send action bar "&7You have an &eInfinity Plank&7 to practive with. Shift Left click to shift blocks"
+            else:
+                stop
+        set player's gamemode to survival
+        fb_give_of_type(player, oak planks)
+        send action bar "&7You have an &eInfinity Plank&7 to practive with. Shift Left click to shift blocks"
+
+
+on region exit:
+    set {_rg} to "%event-region%"
+    replace all "-" with " " in {_rg}
+    if {_rg} contains "build":
+        wait 1 tick
+        set {_reg} to "%region at player%"
+        replace all "-" with " " in {_rg}
+        if {_reg} contains "build":
+            stop
+        set {_u} to uuid of player
+        fb_purge(player)
+        delete {build::in::%uuid of player%}
+        if player has permission "build.gamemode.bypass":
+            if player's gamemode is survival:
+                set player's gamemode to adventure
+            wait 10 ticks
+            fb_purge(player)
+        else:
+            set player's gamemode to adventure
+            wait 10 ticks
+            fb_purge(player)
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

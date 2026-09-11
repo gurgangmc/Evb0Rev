@@ -1,0 +1,24 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command noob:
+	cooldown: 60 seconds
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		teleport player to {location::noob}
+		send "&eTeleported to Noob level!" to player
+		
+#command noob:setspawn:
+#	permission: op
+#	trigger:
+#		set {location::noob} to player's location
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

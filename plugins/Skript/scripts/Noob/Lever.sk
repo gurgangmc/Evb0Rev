@@ -1,0 +1,16 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on right click on lever:
+	add 1 to {lever::%uuid of player%}
+	send action bar "&7&lLever: &r&7%{lever::%uuid of player%}%"
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

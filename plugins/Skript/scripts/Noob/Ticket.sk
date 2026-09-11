@@ -1,0 +1,83 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on step on emerald block:
+	if region at player contains "ticket":
+		if {ranks::%uuid of player%} is "noob":
+			if {cooldown::ticket::%uuid of player%} is not set:
+				set {cooldown::ticket::%uuid of player%} to now + 5 minutes
+				give player 1 kelp named "&aTicket" with lore "&7Use this at Pro Parkour gate"
+				teleport player to {location::ticket}
+				send " " to player
+				send "&a[TICKET TEMPLE]&r Congratulations, you have completed the ticket temple and rewarded a ticket" to player
+				send " " to player
+			if {cooldown::ticket::%uuid of player%} is less than (now - 5 minutes):
+				set {cooldown::ticket::%uuid of player%} to now
+				give player 1 kelp named "&aTicket" with lore "&7Use this at Pro Parkour gate"
+				teleport player to {location::ticket}
+				send " " to player
+				send "&a[TICKET TEMPLE]&r Congratulations, you have completed the ticket temple and rewarded a ticket" to player
+				send " " to player
+			else:
+				teleport player to {location::ticket}
+				set {_ticket} to  difference between now and {cooldown::ticket::%uuid of player%}
+				send " " to player
+				send "&a[TICKET TEMPLE]&r Your cooldown has not finished. &e%{_ticket}%." to player
+				send " " to player
+				
+command ticket:setspawn:
+	permission: op
+	trigger:
+		set {location::noobcourse} to player's location
+		
+on region enter:
+	if event-region is "ticketregion":
+		if {ranks::%uuid of player%} is "noob":
+			send " " to player
+			send "&a[TICKET TEMPLE]&r You have entered the ticket temple. Reach the end for a &aTicket&r!" to player
+			send " " to player
+			set {ticket::hunger::%uuid of player%} to player's food level
+			set player's food level to 3
+		else:
+			send " " to player
+			send "&a[TICKET TEMPLE]&r You can not complete this for rewards if you are not a &7Noob&r." to player
+			send " " to player
+			
+on region exit:
+	if event-region is "ticketregion":
+		if {ranks::%uuid of player%} is "noob":
+			set player's food level to {ticket::hunger::%uuid of player%}
+			delete {ticket::hunger::%uuid of player%}
+			send "&a[TICKET TEMPLE]&r Your hunger has been replenished." to player
+
+on eat:
+	if region at player contains "ticketregion":
+		if {rank::%uuid of player%} is "noob":
+			send "&a[TICKET TEMPLE]&r You must complete this without sprint!" to player
+			cancel event
+			
+command ticket:
+	permission: evb0.pro.ticket
+	cooldown: 4 minutes
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		give player 1 kelp named "&aTicket" with lore "&7Use this at Pro Parkour gate"
+		send "Don't just give these out, do a ticket trial for it."
+
+on right click on hopper:
+	region at event-block contains "hopper"
+	if 1 of player's tool is kelp named "&aTicket":
+		cancel event
+		teleport player to {location::noobcourse}
+		remove 1 kelp named "&aTicket" from player's inventory
+		
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

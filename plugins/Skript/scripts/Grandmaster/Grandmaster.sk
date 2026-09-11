@@ -1,0 +1,273 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command grandmaster:setspawn:
+	permission: op
+	trigger:
+		set {location::grandmaster::temple} to player's location
+		
+command resetgrandmaster <offline player>:
+	permission: op
+	trigger:
+		delete {subrank::grandmaster::%uuid of arg%}
+		send "done"
+
+command grantgrandmaster <offline player>:
+	permission: op
+	trigger:
+		set {subrank::grandmaster::%uuid of arg%} to true
+		send "done"
+
+command grantagility <offline player>:
+	permission: op
+	trigger:
+		set {achievement::temple::agility::%uuid of arg%} to true
+		set {_t} to text component from "%arg-1% has made achievement &a[Agility Temple]"
+		set hover event of {_t} to a new hover event showing "&aAgility Temple &8- &aPass the Agility Temple."
+		broadcast component {_t}
+		send "done"
+
+command grantspeed <offline player>:
+	permission: op
+	trigger:
+		set {achievement::temple::speed::%uuid of arg%} to true
+		set {_t} to text component from "%arg-1% has made achievement &a[Speed Temple]"
+		set hover event of {_t} to a new hover event showing "&aSpeed Temple &8- &aPass the Speed Temple."
+		broadcast component {_t}
+		send "done"
+
+command grantmomentum <offline player>:
+	permission: op
+	trigger:
+		set {achievement::temple::momentum::%uuid of arg%} to true
+		set {_t} to text component from "%arg-1% has made achievement &a[Momentum Temple]"
+		set hover event of {_t} to a new hover event showing "&aMomentum Temple &8- &aPass the Momentum Temple."
+		broadcast component {_t}
+		send "done"
+
+command grantendurance <offline player>:
+	permission: op
+	trigger:
+		set {achievement::temple::endurance::%uuid of arg%} to true
+		set {_t} to text component from "%arg-1% has made achievement &a[Endurance Temple]"
+		set hover event of {_t} to a new hover event showing "&aEndurance Temple &8- &aPass the Endurance Temple."
+		broadcast component {_t}
+		send "done"
+
+on region enter:
+	if event-region is "grandmasterenter":
+		if {grandmaster::%uuid of player%} is not set:
+			set {grandmaster::%uuid of player%} to true
+			if player is sneaking:
+				delete {grandmaster::%uuid of player%}
+				remove slowness from player
+				if {achievement::temple::speed::%uuid of player%} is set:
+					add 1 to {_pass}
+				if {achievement::temple::momentum::%uuid of player%} is set:
+					add 1 to {_pass}
+				if {achievement::temple::agility::%uuid of player%} is set:
+					add 1 to {_pass}
+				if {achievement::temple::endurance::%uuid of player%} is set:
+					add 1 to {_pass}
+				if {_pass} is not set:
+					push player west at speed 2
+					send title "&c&lNOT WORTHY" with subtitle "&7You must complete the other temples first!"
+					stop
+				if {_pass} < 4:
+					push player west at speed 2
+					send title "&c&lNOT WORTHY" with subtitle "&7You must complete the other temples first!"
+					stop
+				teleport player to {location::grandmaster::temple}
+				send " "
+				send "&6&lGRANDMASTER TEMPLE"
+				send "&8----------------"
+				send "You have entered the grandmaster temple. All players have been made invisible"
+				send " "
+				send "You will be met with everything from the temples you have challanged previously. Good luck."
+				send " "
+				send "&eYou have eight minutes to reach the end of the temple."
+				send "Timer starts once u leave the first platform."
+				send " "
+				
+				send title "&6&lGrandmaster Temple" with subtitle "&7Good luck."
+				stop
+			apply slowness 3 to player for 3 seconds
+			wait 3 seconds
+			{grandmaster::%uuid of player%} is set
+			if region at player contains "grandmasterenter":
+				delete {grandmaster::%uuid of player%}
+				remove slowness from player
+				if {achievement::temple::speed::%uuid of player%} is set:
+					add 1 to {_pass}
+				if {achievement::temple::momentum::%uuid of player%} is set:
+					add 1 to {_pass}
+				if {achievement::temple::agility::%uuid of player%} is set:
+					add 1 to {_pass}
+				if {achievement::temple::endurance::%uuid of player%} is set:
+					add 1 to {_pass}
+				if {_pass} is not set:
+					push player west at speed 2
+					send title "&c&lNOT WORTHY" with subtitle "&7You must complete the other temples first!"
+					stop
+				if {_pass} < 4:
+					push player west at speed 2
+					send title "&c&lNOT WORTHY" with subtitle "&7You must complete the other temples first!"
+					stop
+				teleport player to {location::grandmaster::temple}
+				send " "
+				send "&6&lGRANDMASTER TEMPLE"
+				send "&8----------------"
+				send "You have entered the grandmaster temple. All players have been made invisible"
+				send " "
+				send "You will be met with everything from the temples you have challanged previously. Good luck."
+				send " "
+				send "&eYou have eight minutes to reach the end of the temple."
+				send "Timer starts once u leave the first platform."
+				send " "
+				
+				send title "&6&lGrandmaster Temple" with subtitle "&7Good luck."
+				stop
+			else:
+				delete {grandmaster::%uuid of player%}
+				
+				
+				
+on sneak toggle:
+	if region at player contains "grandmasterenter":
+		if {grandmaster::%uuid of player%} is set:				
+			delete {grandmaster::%uuid of player%}
+			remove slowness from player
+			if {achievement::temple::speed::%uuid of player%} is set:
+				add 1 to {_pass}
+			if {achievement::temple::momentum::%uuid of player%} is set:
+				add 1 to {_pass}
+			if {achievement::temple::agility::%uuid of player%} is set:
+				add 1 to {_pass}
+			if {achievement::temple::endurance::%uuid of player%} is set:
+				add 1 to {_pass}
+			if {_pass} < 4:
+				push player west at speed 2
+				send title "&c&lNOT WORTHY" with subtitle "&7You must complete the other temples first!"
+				stop
+			teleport player to {location::grandmaster::temple}
+
+			send " "
+			send "&6&lGRANDMASTER TEMPLE"
+			send "&8----------------"
+			send "You have entered the grandmaster temple. All players have been made invisible"
+			send " "
+			send "You will be met with everything from the temples you have challanged previously. Good luck."
+			send " "
+			send "&eYou have eight minutes to reach the end of the temple."
+			send "Timer starts once u leave the first platform."
+			send " "
+				
+			send title "&6&lGrandmaster Temple" with subtitle "&7Good luck."
+			
+on region enter:
+	if event-region is "grandmasterstart":
+		if {timer::grandmaster::minute::%uuid of player%} is set:
+			teleport player to {location::grandmaster::started}
+			send "&cYou cannot go back once the timer has started!" to player
+
+on region exit:
+	if event-region is "grandmasterstart":
+		if {timer::grandmaster::%uuid of player%} is not set:
+			set {timer::grandmaster::minute::%uuid of player%} to 8
+			set {timer::grandmaster::second::%uuid of player%} to 0
+			send title " " with subtitle "&cTimer Started!" to player
+			
+every second:
+	loop all players:
+		region at loop-player contains "grandmastertemple"
+		if {timer::grandmaster::second::%uuid of loop-player%} is set:
+			remove 1 from {timer::grandmaster::second::%uuid of loop-player%}
+			if {timer::grandmaster::second::%uuid of loop-player%} is less than or equal to 0:
+				if {timer::grandmaster::minute::%uuid of loop-player%} is more than or equal to 1:
+					remove 1 from {timer::grandmaster::minute::%uuid of loop-player%}
+					add 60 to {timer::grandmaster::second::%uuid of loop-player%}
+			if {timer::grandmaster::minute::%uuid of loop-player%} > 0:
+				send action bar "&6&lGRANDMASTER TEMPLE&r: %{timer::grandmaster::minute::%uuid of loop-player%}% minutes %{timer::grandmaster::second::%uuid of loop-player%}% seconds" to loop-player
+			else:
+				send action bar "&6&lGRANDMASTER TEMPLE&r: %{timer::grandmaster::second::%uuid of loop-player%}% seconds" to loop-player
+				
+			if {timer::grandmaster::minute::%uuid of loop-player%} is less than or equal to 0:
+				teleport loop-player to {location::grandmaster::start}
+				send title "&c&lGrandmaster Temple failed" with subtitle "&7You ran out of time!" to loop-player
+				delete {timer::grandmaster::minute::%uuid of loop-player%}
+				delete {timer::grandmaster::second::%uuid of loop-player%}
+	
+every second:
+	loop all players:		
+		region at loop-player contains "grandmasterendpath"
+		region at loop-player does not contain "grandmasterend"
+		if {timer::grandmaster::second::%uuid of loop-player%} is set:
+			remove 1 from {timer::grandmaster::second::%uuid of loop-player%}
+			if {timer::grandmaster::second::%uuid of loop-player%} is less than or equal to 0:
+				if {timer::grandmaster::minute::%uuid of loop-player%} is more than or equal to 1:
+					remove 1 from {timer::grandmaster::minute::%uuid of loop-player%}
+					add 60 to {timer::grandmaster::second::%uuid of loop-player%}
+			if {timer::grandmaster::minute::%uuid of loop-player%} > 0:
+				send action bar "&6&lGRANDMASTER TEMPLE&r: %{timer::grandmaster::minute::%uuid of loop-player%}% minutes %{timer::grandmaster::second::%uuid of loop-player%}% seconds" to loop-player
+			else:
+				send action bar "&6&lGRANDMASTER TEMPLE&r: %{timer::grandmaster::second::%uuid of loop-player%}% seconds" to loop-player
+				
+every second:
+	loop all players:		
+		region at loop-player contains "grandmasterendpath"
+		send action bar "&6&lGRANDMASTER TEMPLE&r: COMPLETED" to loop-player
+
+on region enter:
+	if event-region is "grandmasterdeath":
+		set {fall::%uuid of player%} to true
+		teleport player to {location::grandmaster::start}
+		send title "&c&lGrandmaster Temple failed" with subtitle "&7You died!" to player
+		delete {timer::grandmaster::minute::%uuid of player%}
+		delete {timer::grandmaster::second::%uuid of player%}
+
+		
+on join:
+	delete {timer::grandmaster::second::%uuid of player%}
+	delete {timer::grandmaster::minute::%uuid of player%}
+	delete {fall::%uuid of player%}
+	delete {grandmaster::%uuid of player%}
+
+
+on region enter:
+	if event-region is "grandmasterend":
+		{gm::completed::%uuid of player%} is not set
+		set {gm::completed::%uuid of player%} to true
+		delete {timer::grandmaster::second::%uuid of player%}
+		delete {timer::grandmaster::minute::%uuid of player%}
+		apply slowness 5 to player for 18 seconds
+		
+		wait 5 seconds
+		send title "&7&l???" with subtitle "&7You did it."
+		
+		wait 5 seconds
+		send title "&7&l???" with subtitle "&6&lGRANDMASTER"
+		wait 8 seconds
+		teleport player to {location::grandmaster::start}
+		delete {gm::completed::%uuid of player%}
+		if {achievement::temple::grandmaster::%uuid of player%} is not set:
+			set {achievement::temple::grandmaster::%uuid of player%} to true
+			set {_t} to text component from "&6&l%player%&r has completed challange &6[Grandmaster]"
+			set hover event of {_t} to a new hover event showing "&6Grandmaster &8- &6Pass all 4 temples and pass the Grandmaster temple."
+			broadcast component {_t}
+			set {subrank::grandmaster::%uuid of player%} to true
+			execute console command "ranks %player% master"
+
+
+				
+				
+		
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

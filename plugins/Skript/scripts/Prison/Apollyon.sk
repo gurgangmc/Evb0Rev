@@ -1,0 +1,121 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on left click:
+	if event-block is redstone wall torch:
+		if region at event-block contains "torch":
+			cancel event
+			set {doingtorch::%uuid of player%} to true
+			if {apollyon::torch::percent::%uuid of player%} is not set:
+				set {apollyon::torch::percent::%uuid of player%} to 20
+				set {apollyon::torch::%uuid of player%} to 1
+				send title "&8&lDestroying..." with subtitle "|&7||| &8(&720%%&8)"
+			else:
+				add 20 to {apollyon::torch::percent::%uuid of player%}
+				add 1 to {apollyon::torch::%uuid of player%}
+				set {_temp} to ""
+				loop 4 - {apollyon::torch::%uuid of player%} times:
+					add "|" to {_temp}
+				loop {apollyon::torch::%uuid of player%} times:
+					add "&7|" to {_temp}
+				send title "&8&lDestroying..." with subtitle "%{_temp}% &8(&7%{apollyon::torch::percent::%uuid of player%}%%%&8)"
+				if {apollyon::torch::%uuid of player%} >= 5:
+					set event-block to air
+					delete {apollyon::torch::%uuid of player%}
+					delete {apollyon::torch::percent::%uuid of player%}
+					add 1 to {apollyon::torch}
+					wait 5 seconds
+					#spawn lightning at event-block
+					remove 1 from {apollyon::torch}
+					if region at event-block contains "torch2":
+						set event-block to redstone wall torch[facing=east]
+					if region at event-block contains "torch3":
+						set event-block to redstone wall torch[facing=east]
+					if region at event-block contains "torch1":
+						set event-block to redstone wall torch[facing=west]
+					if region at event-block contains "torch4":
+						set event-block to redstone wall torch[facing=west]
+				delete {doingtorch::%uuid of player%}
+				wait 3 seconds
+				{doingtorch::%uuid of player%} is not set
+				delete {apollyon::torch::%uuid of player%}
+				delete {apollyon::torch::percent::%uuid of player%}
+				
+
+on region enter:
+	if event-region is "apollyon-entrance":
+		{apollyon::started} is not set
+		set {apollyon::started} to true
+		if {apollyon::torch} >=4:
+			stop
+		else:
+			apply darkness to player for 30 seconds
+			wait 5 seconds
+			send " "
+			send "&8&l??? &r&8» &r&7The door is not open."
+			send " "
+			wait 5 seconds
+			send " "
+			send "&8&l??? &r&8» &r&7Return to where u came from."
+			send " "
+			wait 5 seconds
+			remove darkness from player
+			teleport player to {location::apollyon::fail}
+			apply slow falling to player for 10 seconds
+		delete {apollyon::started}
+				
+command apollyon:setspawn:
+	permission: op
+	trigger:
+		set {location::apollyon::pass} to player's location				
+
+command castle:setspawn:
+	permission: op
+	trigger:
+		set {location::castle::start} to player's location		
+
+on region enter:
+	if event-region is "apollyon-entrance":
+		cancel event
+on region enter:
+	if event-region is "apollyon-gate":
+		set metadata tag "Apollyon" of player to chest inventory with 5 rows named "THE GATE"
+		loop 45 times:
+			set slot loop-value - 1 of metadata tag "Apollyon" of player to black stained glass pane named " "
+		set slot 12 of metadata tag "Apollyon" of player to warped hyphae named "&2&lRELINQUISH"
+		set slot 14 of metadata tag "Apollyon" of player to crimson hyphae named "&4&lACCEPTETH"
+		set slot 31 of metadata tag "Apollyon" of player to crying obsidian named "<#695f7a>&nThe Way" with lore "&7Beware:" and "&7This castle conceals a sinister seat; the air whispers malevolence."
+		open (metadata tag "Apollyon" of player) to player
+
+on inventory click:
+	if event-inventory = (metadata tag "Apollyon" of player):
+		cancel event
+		if event-slot = 14:
+			if {apollyon::cutscene1::%uuid of player%} is not set:
+				set {apollyon::cutscene1::%uuid of player%} to true
+				wait 2 seconds
+				send " "
+				send "&8&l??? &r&8» &r&7Behold, one damned soul, with weary resolve, accepteth the dire power to enter the cursed stronghold of the dread emperor."
+				send " "
+				wait 3 seconds
+				teleport player to {location::castle::start}
+				apply slow falling to player for 7 seconds
+				delete {apollyon::cutscene1::%uuid of player%}
+				
+	
+
+every 5 seconds:
+	loop all players:
+		if world of loop-player is "evb0_minecraft_apollyon":
+			apply darkness to loop-player for 12 seconds
+			apply slowness 2 to loop-player for 12 seconds
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

@@ -1,0 +1,18 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command /discord:
+    trigger:
+        send formatted "<link:https://discord.gg/CnHkzqmZ6g/>&9[DISCORD] &8>> &7 https://discord.gg/CnHkzqmZ6g/<reset>" to player
+every 5 minutes:
+    broadcast "<link:https://discord.gg/CnHkzqmZ6g/>&9[DISCORD] &8>> &7 https://discord.gg/CnHkzqmZ6g/<reset>"
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

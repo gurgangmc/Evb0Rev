@@ -1,0 +1,45 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command /fly [<player>]:
+    aliases: /flight
+    permission: evb0.fly
+    permission message: "&cYou don't have permission to use this command."
+    trigger:
+        # ── Self toggle ──
+        if arg-1 is not set:
+            if player's fly mode is true:
+                set player's fly mode to false
+                set player's flight mode to false
+                send "&7&lFly &8» &cDisabled." to player
+            else:
+                set player's fly mode to true
+                send "&7&lFly &8» &aEnabled." to player
+
+        else:
+            if player does not have permission "evb0.fly.others":
+                send "&cYou don't have permission to toggle fly for others." to player
+                stop
+            set {_target} to arg-1
+            if {_target} is not online:
+                send "&cPlayer &7%arg-1%&c is not online." to player
+                stop
+            if {_target}'s fly mode is true:
+                set {_target}'s fly mode to false
+                set {_target}'s flight mode to false
+                send "&7&lFly &8» &cDisabled." to {_target}
+                send "&7&lFly &8» &cDisabled &7for &f%{_target}%&7." to player
+            else:
+                set {_target}'s fly mode to true
+                send "&7&lFly &8» &aEnabled." to {_target}
+                send "&7&lFly &8» &aEnabled &7for &f%{_target}%&7." to player
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

@@ -1,0 +1,73 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on region enter:
+    if event-region is "lab":
+        teleport player to location(23,5,49,world "evb0_minecraft_labryinth")
+    if event-region is "labtp1":
+        teleport player to location(18,21,48,world "evb0_minecraft_labryinth")
+    if event-region is "labblind":
+        apply blindness to player for 9999 tick
+    if event-region is "labjump":
+        apply jump boost 2 to player for 9999 tick
+    if event-region is "labdie1":
+        teleport player to location(23,5,49,world "evb0_minecraft_labryinth")
+    if event-region is "labdie2":
+        teleport player to location(23,7,-13,world "evb0_minecraft_labryinth")
+    if event-region is "labdie3":
+        teleport player to location(19,9,-47,world "evb0_minecraft_labryinth")
+    if event-region is "labdie4":
+        teleport player to location(19,15,-12,world "evb0_minecraft_labryinth")
+    if event-region is "labdie5":
+        teleport player to location(18,21,48,world "evb0_minecraft_labryinth")
+    if event-region is "labdie6":
+        teleport player to location(15,16,32,world "evb0_minecraft_labryinth")
+    if event-region is "labdie7":
+        teleport player to location(15,22,5,world "evb0_minecraft_labryinth")
+    if event-region is "labdie8":
+        teleport player to location(15,23,-43,world "evb0_minecraft_labryinth")
+    if event-region is "labdie9" or "labdie10" or "labdie11":
+        teleport player to location(-0,26,-37,world "evb0_minecraft_labryinth")
+    if event-region is "labtp2":
+        teleport player to location(-94,47,-85,world "evb0_minecraft_labryinth")
+    if event-region is "labtp3":
+        teleport player to location(-77,8,50,world "evb0_minecraft_labryinth")
+    if event-region is "labtp4":
+        teleport player to location(87,-12,155,world "evb0_minecraft_labryinth")
+    if event-region is "labtp5":
+        teleport player to location(-72,7,-44,world "evb0_minecraft_labryinth")
+    if event-region is "labtp6":
+        teleport player to location(-43,1,1,world "evb0_minecraft_labryinth")
+    if event-region is "labtp7":
+        teleport player to location(-222,-8,60,world "evb0_minecraft_labryinth")
+    if event-region is "labtp8":
+        teleport player to location(78,-33,-23,world "evb0_minecraft_labryinth")
+    if event-region is "labtp9":
+        teleport player to location(82,-37,-121,world "evb0_minecraft_labryinth")
+    if event-region is "labend":
+        teleport player to location(1,69,-22,world "evb0")
+    if event-region is "labtpnote":
+        teleport player to location(-0,22,3,world "evb0_minecraft_labryinth")
+on region leave:
+    if event-region is "labblind":
+        remove blindness from player
+    if event-region is "labjump":
+        remove jump boost from player
+on right click on iron door:
+    if region at event-block is "labblind":
+        teleport player to location(15,16,32,world "evb0_minecraft_labryinth")
+on step on purple shulker box:
+    apply levitation to player for 100 tick
+on step on crimson hyphae:
+    if region at event-block is "water1":
+        teleport player to location(-0,26,-37,world "evb0_minecraft_labryinth")
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

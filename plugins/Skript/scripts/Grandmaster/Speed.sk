@@ -1,0 +1,131 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command speed:setspawn:
+	permission: op
+	trigger:
+		set {location::speed::start} to player's location
+		
+on region enter:
+	if event-region is "speedenter":
+		if {speed::%uuid of player%} is not set:
+			set {speed::%uuid of player%} to true
+			if player is sneaking:
+				delete {speed::%uuid of player%}
+				remove slowness from player
+				teleport player to {location::speed::temple}
+				send " "
+				send "&b&lSPEED TEMPLE"
+				send "&8----------------"
+				send "You have entered the speed temple. All players have been made invisible"
+				send " "
+				send "&eYou have one minute to reach the end of the temple."
+				send "Timer starts once u leave the first platform."
+				send " "
+				
+				send title "&b&lSpeed Temple" with subtitle "&7Get to the end in &e1 minute"
+				stop
+			apply slowness 3 to player for 3 seconds
+			wait 3 seconds
+			{speed::%uuid of player%} is set
+			if region at player contains "speedenter":
+				delete {speed::%uuid of player%}
+				remove slowness from player
+				teleport player to {location::speed::temple}
+				send " "
+				send "&b&lSPEED TEMPLE"
+				send "&8----------------"
+				send "You have entered the speed temple. All players have been made invisible"
+				send " "
+				send "&eYou have one minute to reach the end of the temple."
+				send "Timer starts once u leave the first platform."
+				send " "
+			else:
+				delete {speed::%uuid of player%}
+				
+				
+				
+on sneak toggle:
+	if region at player contains "speedenter":
+		if {speed::%uuid of player%} is set:				
+			delete {speed::%uuid of player%}
+			remove slowness from player
+			teleport player to {location::speed::temple}
+			send " "
+			send "&b&lSPEED TEMPLE"
+			send "&8----------------"
+			send "You have entered the speed temple. All players have been made invisible"
+			send " "
+			send "&eYou have one minute to reach the end of the temple."
+			send "Timer starts once u leave the first platform."
+			send " "
+			
+on region enter:
+	if event-region is "speedstart":
+		if {timer::speed::%uuid of player%} is set:
+			teleport player to {location::speed::started}
+			send "&cYou cannot go back once the timer has started!" to player
+
+on region exit:
+	if event-region is "speedstart":
+		if {timer::speed::%uuid of player%} is not set:
+			set {timer::speed::%uuid of player%} to 60
+			send title " " with subtitle "&cTimer Started!" to player
+			
+every second:
+	loop all players:
+		region at loop-player contains "speedtemple"
+		if {timer::speed::%uuid of loop-player%} is set:
+			remove 1 from {timer::speed::%uuid of loop-player%}
+			send action bar "&b&lSPEED TEMPLE&r: %{timer::speed::%uuid of loop-player%}% seconds" to loop-player
+			if {timer::speed::%uuid of loop-player%} is less than or equal to 0:
+				teleport loop-player to {location::speed::start}
+				send title "&c&lSpeed Temple failed" with subtitle "&7You ran out of time!" to loop-player
+				delete {timer::speed::%uuid of loop-player%} 
+				
+on region enter:
+	if event-region is "speeddeath":
+		set {fall::%uuid of player%} to true
+		teleport player to {location::speed::start}
+		send title "&c&lSpeed Temple failed" with subtitle "&7You died!" to player
+		delete {timer::speed::%uuid of player%} 
+		wait 1 second
+		delete {fall::%uuid of player%}
+		
+on join:
+	delete {timer::speed::%uuid of player%}
+	delete {fall::%uuid of player%}
+	delete {speed::%uuid of player%}
+
+on damage:
+	if damage cause is fall:
+		if {fall::%uuid of victim%} is set:
+			cancel event
+			delete {fall::%uuid of victim%}
+
+on region enter:
+	if event-region is "speedend":
+		delete {timer::speed::%uuid of player%}
+		send action bar "&b&lSPEED TEMPLE&r: COMPLETED"
+		wait 1 second
+		teleport player to {location::speed::start}
+		if {achievement::temple::speed::%uuid of player%} is not set:
+			set {achievement::temple::speed::%uuid of player%} to true
+			set {_t} to text component from "%player% has made achievement &a[Speed Temple]"
+			set hover event of {_t} to a new hover event showing "&aSpeed Temple &8- &aPass the Speed Temple!"
+			broadcast component {_t}
+
+
+				
+				
+		
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

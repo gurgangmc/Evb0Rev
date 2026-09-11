@@ -1,0 +1,84 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command agility:setspawn:
+	permission: op
+	trigger:
+		set {location::agility::temple} to player's location
+		
+on region enter:
+	if event-region is "agilityenter":
+		if {agility::%uuid of player%} is not set:
+			set {agility::%uuid of player%} to true
+			if player is sneaking:
+				delete {agility::%uuid of player%}
+				remove slowness from player
+				teleport player to {location::agility::temple}
+				send " "
+				send "&c&lAGILITY TEMPLE"
+				send "&8----------------"
+				send "You have entered the agility temple. All players have been made invisible"
+				send " "
+				send title "&c&lAgility Temple" with subtitle "&7Be careful, think quick"
+				stop
+			apply slowness 3 to player for 3 seconds
+			draw ash particle above player
+			wait 3 seconds
+			{agility::%uuid of player%} is set
+			if region at player contains "agilityenter":
+				delete {agility::%uuid of player%}
+				remove slowness from player
+				teleport player to {location::agility::temple}
+				send " "
+				send "&c&lAGILITY TEMPLE"
+				send "&8----------------"
+				send "You have entered the agility temple. All players have been made invisible"
+				send " "
+				send title "&c&lAgility Temple" with subtitle "&7Be careful, think quick"
+			else:
+				delete {agility::%uuid of player%}
+				
+				
+				
+				
+on sneak toggle:
+	if region at player contains "agilityenter":
+		if {agility::%uuid of player%} is set:				
+			delete {agility::%uuid of player%}
+			remove slowness from player
+			teleport player to {location::agility::temple}
+			send " "
+			send "&c&lAGILITY TEMPLE"
+			send "&8----------------"
+			send "You have entered the agility temple. All players have been made invisible"
+			send " "
+			send title "&c&lAgility Temple" with subtitle "&7Be careful, think quick"
+			
+on region enter:
+	if event-region is "agilitydeath":
+		set {fall::%uuid of player%} to true
+		teleport player to {location::agility::start}
+		send title "&c&lAgility Temple failed" with subtitle "&7You died!" to player
+		wait 1 second
+		delete {fall::%uuid of player%}
+		
+on region enter:
+	if event-region is "agilityend":
+		apply slowness 5 to player for 3 seconds
+		wait 3 second
+		teleport player to {location::agility::start}
+		if {achievement::temple::agility::%uuid of player%} is not set:
+			set {achievement::temple::agility::%uuid of player%} to true
+			set {_t} to text component from "%player% has made achievement &a[Agility Temple]"
+			set hover event of {_t} to a new hover event showing "&aAgility Temple &8- &aPass the Agility Temple."
+			broadcast component {_t}
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

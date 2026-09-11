@@ -1,0 +1,24 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on damage:
+	attacker is a player
+	if attacker has permission "evb0.admin.pvp":
+		stop
+	else:
+		if region at attacker contains "event":
+			if {events::pvp} is true:
+				stop
+			else:
+				send "&8[&eEVENTS&8] &cPvP is currently disabled!" to attacker
+		cancel event 
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

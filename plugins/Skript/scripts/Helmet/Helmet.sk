@@ -1,0 +1,57 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on step on oak pressure plate:
+	region at event-block contains "helmet-noob"
+	if {achievement::n00b::%uuid of player%} is not set:
+		#set {achievement::n00b::%uuid of player%} to true
+		set {_t} to text component from "%player% has made achievement &a[N00B]"
+		set hover event of {_t} to a new hover event showing "&aN00B &8- &7Beat the noob helmet tower!"
+		broadcast component {_t}
+	send "&aYou have unlocked a new helmet!"
+	send "&aUse &e/helmet &ato equip it!"
+	
+on step on spruce pressure plate:	
+	region at event-block contains "helmet-pro"
+	if {achievement::pr0::%uuid of player%} is not set:
+		#set {achievement::pr0::%uuid of player%} to true
+		set {_t} to text component from "%player% has made achievement &a[PR0]"
+		set hover event of {_t} to a new hover event showing "&aPR0 &8- &7Beat the pro helmet tower!"
+		broadcast component {_t}
+	send "&aYou have unlocked a new helmet!"
+	send "&aUse &e/helmet &ato equip it!"
+	
+on step on heavy weighted pressure plate:	
+	region at event-block contains "helmet-master"
+	if {achievement::m4st3r::%uuid of player%} is not set:
+		#set {achievement::m4st3r::%uuid of player%} to true
+		set {_t} to text component from "%player% has made achievement &a[M4ST3R]"
+		set hover event of {_t} to a new hover event showing "&aM4ST3R &8- &7Beat the master helmet tower!"
+		broadcast component {_t}
+	send "&aYou have unlocked a new helmet!"
+	send "&aUse &e/helmet &ato equip it!"
+		
+command helmet-tower:
+	permission: evb0.noob.teleport
+	cooldown: 60 seconds
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		teleport player to {location::helmetenter}
+		send "&eTeleported to Helmet Tower!" to player
+		
+command helmet:setspawn:
+	permission: op
+	trigger:
+		set {location::helmetenter} to player's location
+
+		
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

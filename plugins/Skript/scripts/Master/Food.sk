@@ -1,0 +1,21 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command gc:
+	permission: evb0.master.food
+	aliases: goldencarrot, goldencarrots
+	cooldown: 2 minute
+	cooldown message: &cPlease wait %remaining time% before using this command again!
+	trigger:
+		give player 5 golden carrot
+		send "&eYou recieved 5 golden carrot!"
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

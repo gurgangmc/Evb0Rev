@@ -1,0 +1,40 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on drop:
+	if {itemlock::%uuid of player%} is set:
+		if {ul::%uuid of player%} is not set:
+			set {ul::%uuid of player%} to true
+			send action bar "&7&lItem Lock: &7Please drop your item again to drop it!" to player
+			cancel event
+			wait 1 second
+			delete {ul::%uuid of player%}
+			
+on right click on hopper:
+	player is not op
+	cancel event
+			
+on right click on crafting table:
+	player is not op
+	cancel event
+			
+on right click on furnace:
+	player is not op
+	cancel event
+			
+on right click on brewing stand:
+	player is not op
+	cancel event
+	
+on join:
+	set player's gamemode to adventure
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

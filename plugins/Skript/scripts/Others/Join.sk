@@ -1,0 +1,24 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on join:
+	if {join::%uuid of player%} is not set:
+		add 1 to {joincount}
+		set {join::%uuid of player%} to {joincount}
+		broadcast "&8[&5NEW&8] &rWelcome to &3EvboRev&r, %player%! &8[&e#%{joincount}%&8]"
+		wait 1 second
+		execute console command "ranks %player% noob"
+	send "§r§3Welcome §r§3to §r§3Evb0! §r§3§r§3§fMake §r§3§fsure §r§3§fto §r§3§fread §r§3§fthe §r§3§frules §r§3§fby §r§3§feither §r§3§f§r§3§f§eClicking §r§3§f§eHere§r§3§f§e§f §r§3§f§e§for §r§3§f§e§fdoing §r§3§f§e§f§r§3§f§e§f§b/rules§r§3§f§e§f§b§f!"
+	
+on quit:
+	set quit message to ""
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

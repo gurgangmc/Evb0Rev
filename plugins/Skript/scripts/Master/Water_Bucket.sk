@@ -1,0 +1,42 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on right click:
+	player has player's tool on cooldown:
+		stop
+	if name of player's tool is "&6%name of player%'s Master Water Bucket":
+		cancel event
+		if player does not have permission "evb0.master.wb":
+			send "&cYou must be Master+ to use this!" to player
+			stop
+		send action bar "&7No fall damage: &r0.3 seconds"
+		set item cooldown of player's tool for player to 1 second
+		set {nofall::%uuid of player%} to true
+		wait 0.5 seconds
+		delete {nofall::%uuid of player%}
+
+on drop:
+	if event-item is water bucket:
+		cancel event
+
+on damage:
+	if damage cause is fall:
+		if {nofall::%uuid of victim%} is set:
+			cancel event
+			delete {nofall::%uuid of victim%}
+	if victim is burning:
+		if {nofall::%uuid of victim%} is set:
+			if block at victim is not lava:
+
+				extinguish the victim
+				delete {nofall::%uuid of victim%}
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

@@ -1,0 +1,86 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on step on gold block:
+	if region at player contains "keyregion":
+		if {ranks::%uuid of player%} is "pro":
+			if {cooldown::key::%uuid of player%} is not set:
+				set {cooldown::key::%uuid of player%} to now + 5 minutes
+				give player 1 gold nugget named "Key" with lore "&7Use this at Master Parkour gate"
+				teleport player to {location::key}
+				send " " to player
+				send "&6[KEY TEMPLE]&r Congratulations, you have completed the temple and rewarded a key" to player
+				send " " to player
+			if {cooldown::key::%uuid of player%} is less than (now - 5 minutes):
+				set {cooldown::key::%uuid of player%} to now
+				give player 1 gold nugget named "Key" with lore "&7Use this at Master Parkour gate"
+				teleport player to {location::key}
+				send " " to player
+				send "&6[KEY TEMPLE]&r Congratulations, you have completed the temple and rewarded a key" to player
+				send " " to player
+			else:
+				teleport player to {location::key}
+				set {_key} to  difference between now and {cooldown::key::%uuid of player%}
+				send " " to player
+				send "&6[KEY TEMPLE]&r Your cooldown has not finished. &e%{_key}%." to player
+				send " " to player
+		else:
+			teleport player to {location::key}
+			send " " to player
+			send "&6[KEY TEMPLE]&r You can not complete this for rewards if you are not a Pro&r." to player
+			send " " to player
+				
+command key:setspawn:
+	permission: op
+	trigger:
+		set {location::procourse} to player's location
+		
+on region enter:
+	if event-region is "keyregion":
+		if {ranks::%uuid of player%} is "pro":
+			if {cooldown::key::%uuid of player%} is less than (now - 5 minutes):
+				send " " to player
+				send "&6[KEY TEMPLE]&r You have entered the temple. Reach the end for a &6Key&r!" to player
+				send " " to player
+			else if {cooldown::key::%uuid of player%} is not set:
+				send " " to player
+				send "&6[KEY TEMPLE]&r You have entered the temple. Reach the end for a &6Key&r!" to player
+				send " " to player
+			else:
+				set {_key} to  difference between now and {cooldown::key::%uuid of player%}
+				send " " to player
+				send "&6[KEY TEMPLE]&r You have entered the temple. Your cooldown is actiove for &e%{_key}%&r." to player
+				send " " to player
+			
+				
+		else:
+			send " " to player
+			send "&6[KEY TEMPLE]&r You can not complete this for rewards if you are not a Pro&r." to player
+			send " " to player
+
+			
+command key:
+	permission: evb0.master.key
+	cooldown: 4 minutes
+	cooldown message: &cTry again later... %remaining time%
+	trigger:
+		give player 1 gold nugget named "Key" with lore "&7Use this at Master Parkour gate"
+		send "&6Don't just give these out, do a key trial for it."
+		
+on right click on yellow wool:
+	region at event-block is "keyhopper"
+	if 1 of player's tool is gold nugget named "Key":
+		cancel event
+		teleport player to {location::procourse}
+		remove 1 gold nugget named "Key" from player's inventory
+		
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

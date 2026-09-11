@@ -1,0 +1,137 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on left click:
+    player's gamemode is not adventure
+    set {_rg} to "%region at player%"
+    replace all "-" with " " in {_reg}
+    if {_rg} contains "build":
+
+        if player is sneaking:
+            set {_i} to player's tool
+            if {_i} is set:
+                if name of {_i} is fb_name():
+                    if lore of {_i} is fb_lore_line():
+                        fb_open_gui(player)
+
+
+on damage:
+    set {_rg} to "%region at victim%"
+    replace all "-" with " " in {_reg}
+    if {_rg} contains "build":
+        set damage to 0
+
+
+on left click:
+    player's gamemode is not adventure
+    set {_rg} to "%region at event-block%"
+    replace all "-" with " " in {_reg}
+    if {_rg} contains "build":
+
+        # don't break barriers
+        if event-block is barrier:
+            stop
+
+        # check if player is holding a forever block
+        if player is sneaking:
+            set {_i} to player's tool
+            if {_i} is set:
+                if name of {_i} is fb_name():
+                    if lore of {_i} is fb_lore_line():
+                        fb_open_gui(player)
+                        
+                        stop # prevent breaking forever blocks
+
+        set {_loc} to location of event-block
+        set event-block to air
+        wait 1 tick
+        kill all dropped items in radius 2 around {_loc}
+
+    if {_rg} contains "build":
+        if {build::blacklist::%uuid of player%} is set:
+            send "&cYou have been blacklisted! &7/appeal to appeal." to player
+            stop trigger        
+        if {build::whitelist::enabled} is set:
+            if {build::whitelist::players::%uuid of player%} is set:
+                wait 1 tick
+            else:
+                send "&cBuild is currently on whitelist." to player
+                stop
+		
+        # don't break barriers
+        if event-block is barrier:
+            stop
+
+        # keep existing forever block logic
+        set {_loc} to location of event-block
+        set event-block to air
+        wait 1 tick
+        kill all dropped items in radius 2 around {_loc}
+
+on place:
+    player's gamemode is not adventure
+    set {_rg} to "%region at event-block%"
+    replace all "-" with " " in {_rg}
+    if {_rg} contains "build":
+        if {build::blacklist::%uuid of player%} is set:
+            send "&cYou have been blacklisted! &7/appeal to appeal." to player
+            fb_purge(player)
+            cancel event
+            stop
+        if {build::whitelist::enabled} is set:
+            if {build::whitelist::players::%uuid of player%} is set:
+                #uncancel event	
+                set {_i} to player's tool
+                wait 1 tick
+                if {_i} is set:
+                    set {_nm} to name of {_i}
+                    if {_nm} is fb_name():
+                        set {_ln} to line 1 of lore of {_i}
+                        if {_ln} is fb_lore_line():
+                            set {_t} to type of event-block
+                            if player's gamemode is creative:
+                                fb_purge(player)
+                            fb_replace_of_type(player, {_t})
+                            stop
+            else:
+                send "&cBuild is currently on whitelist." to player
+                fb_purge(player)
+                cancel event
+                stop
+        #uncancel event	
+        set {_i} to player's tool
+        wait 1 tick
+        if {_i} is set:
+            set {_nm} to name of {_i}
+            if {_nm} is fb_name():
+                set {_ln::*} to lore of {_i}
+                if {_ln::*} is fb_lore_line():
+                    set {_t} to type of event-block
+                    if player's gamemode is creative:
+                        fb_purge(player)
+                    fb_replace_of_type(player, {_t})
+
+on drop:
+    if event-item is set:
+        set {_nm} to name of event-item
+        if {_nm} is fb_name():
+            set {_ln::*} to lore of event-item
+            if {_ln::*} is fb_lore_line():
+                cancel event
+
+every 15 seconds:
+    loop all players:
+        set {_rg} to "%region at loop-player%"
+        replace all "-" with " " in {_rg}
+        if {_rg} does not contain "build":
+            fb_purge(loop-player)
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

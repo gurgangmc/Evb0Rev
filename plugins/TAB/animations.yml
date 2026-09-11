@@ -1,0 +1,289 @@
+MyAnimation1:
+  change-interval: 100
+  texts:
+    - '&d-&3--------------'
+    - '&3-&d-&3-------------'
+    - '&3--&d-&3------------'
+    - '&3---&d-&3-----------'
+    - '&3----&d-&3----------'
+    - '&3-----&d-&3---------'
+    - '&3------&d-&3--------'
+    - '&3-------&d-&3-------'
+    - '&3--------&d-&3------'
+    - '&3---------&d-&3-----'
+    - '&3----------&d-&3----'
+    - '&3-----------&d-&3---'
+    - '&3------------&d-&3--'
+    - '&3-------------&d-&3-'
+    - '&3--------------&d-'
+    - '&3-------------&d-&3-'
+    - '&3------------&d-&3--'
+    - '&3-----------&d-&3---'
+    - '&3----------&d-&3----'
+    - '&3---------&d-&3-----'
+    - '&3--------&d-&3------'
+    - '&3-------&d-&3-------'
+    - '&3------&d-&3--------'
+    - '&3-----&d-&3---------'
+    - '&3----&d-&3----------'
+    - '&3---&d-&3-----------'
+    - '&3--&d-&3------------'
+    - '&3-&d-&3-------------'
+    - '&d-&3--------------'
+ServerName:
+  change-interval: 300
+  texts:
+  - '&c&lServerName'
+  - '&c&n&lServerName'
+  - '&b&lServerName'
+  - '&b&l&nServerName'
+  - '&e&lServerName'
+  - '&e&n&lServerName'
+web:
+  change-interval: 200
+  texts:
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+  - '&6w&eww.domain.com'
+  - '&ew&6w&ew.domain.com'
+  - '&eww&6w&e.domain.com'
+  - '&ewww&6.&edomain.com'
+  - '&ewww.&6d&eomain.com'
+  - '&ewww.d&6o&emain.com'
+  - '&ewww.do&6m&eain.com'
+  - '&ewww.dom&6a&ein.com'
+  - '&ewww.doma&6i&en.com'
+  - '&ewww.domai&6n&e.com'
+  - '&ewww.domain&6.&ecom'
+  - '&ewww.domain.&6c&eom'
+  - '&ewww.domain.c&6o&em'
+  - '&ewww.domain.co&6m'
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+  - '&ewww.domain.com'
+vote:
+  change-interval: 1000
+  texts:
+  - '&avote.domain.com'
+  - '&a&nvote.domain.com'
+  - '&5vote.domain.com'
+  - '&5&nvote.domain.com'
+Welcome:
+  change-interval: 400
+  texts:
+  - '&7&lW_'
+  - '&7&lW_'
+  - '&7&lWe_'
+  - '&7&lWel_'
+  - '&7&lWelc_'
+  - '&7&lWelco_'
+  - '&7&lWelcom_'
+  - '&7&lWelcome_'
+  - '&7&lWelcome_'
+  - '&7&lWelcome_'
+  - '&7&lWelcome_'
+  - '&7&lWelcom_'
+  - '&7&lWelco_'
+  - '&7&lWelc_'
+  - '&7&lWel_'
+  - '&7&lWe_'
+  - '&7&lW_'
+  - '&7&lW_'
+time:
+  change-interval: 3000
+  texts:
+    - '&7Time &b%time%'
+    - '&7Date &b%date%'
+barcolors:
+  change-interval: 1000
+  texts:
+    - RED
+    - BLUE
+    - GREEN
+    - YELLOW
+    
+God:
+  change-interval: 500
+  texts:
+  - "<gradient:#0B7E58:#11C12F:#0EA242>GOD "
+  - "<gradient:#0C8753:#12C82A:#0FAB3D>GOD "
+  - "<gradient:#0D904D:#12CF26:#10B238>GOD "
+  - "<gradient:#0D9948:#13D621:#10B934>GOD "
+  - "<gradient:#0EA242:#0B7E58:#11C12F>GOD "
+  - "<gradient:#0FAB3D:#0C8753:#12C82A>GOD "
+  - "<gradient:#10B238:#0D904D:#12CF26>GOD "
+  - "<gradient:#10B934:#0D9948:#13D621>GOD "
+  - "<gradient:#11C12F:#0EA242:#0B7E58>GOD "
+  - "<gradient:#12C82A:#0FAB3D:#0C8753>GOD "
+  - "<gradient:#12CF26:#10B238:#0D904D>GOD "
+  - "<gradient:#13D621:#10B934:#0D9948>GOD "
+  - "<gradient:#13D621:#10B934:#0D9948>GOD "
+  - "<gradient:#12CF26:#10B238:#0D904D>GOD "
+  - "<gradient:#12C82A:#0FAB3D:#0C8753>GOD "
+  - "<gradient:#11C12F:#0EA242:#0B7E58>GOD "
+  - "<gradient:#10B934:#0D9948:#13D621>GOD "
+  - "<gradient:#10B238:#0D904D:#12CF26>GOD "
+  - "<gradient:#0FAB3D:#0C8753:#12C82A>GOD "
+  - "<gradient:#0EA242:#0B7E58:#11C12F>GOD "
+  - "<gradient:#0D9948:#13D621:#10B934>GOD "
+  - "<gradient:#0D904D:#12CF26:#10B238>GOD "
+  - "<gradient:#0C8753:#12C82A:#0FAB3D>GOD "
+  - "<gradient:#0B7E58:#11C12F:#0EA242>GOD "
+  
+Paladinold:
+  change-interval: 500
+  texts:
+  - "&#495BE0P&#5560E1a&#6166E1l&#6D6BE2a&#7970E3d&#8676E3i&#927BE4n &#9E80E5| "
+  - "&#5560E1P&#495BE0a&#5560E1l&#6166E1a&#6D6BE2d&#7970E3i&#8676E3n &#927BE4| "
+  - "&#6166E1P&#5560E1a&#495BE0l&#5560E1a&#6166E1d&#6D6BE2i&#7970E3n &#8676E3| "
+  - "&#6D6BE2P&#6166E1a&#5560E1l&#495BE0a&#5560E1d&#6166E1i&#6D6BE2n &#7970E3| "
+  - "&#7970E3P&#6D6BE2a&#6166E1l&#5560E1a&#495BE0d&#5560E1i&#6166E1n &#6D6BE2| "
+  - "&#8676E3P&#7970E3a&#6D6BE2l&#6166E1a&#5560E1d&#495BE0i&#5560E1n &#6166E1| "
+  - "&#927BE4P&#8676E3a&#7970E3l&#6D6BE2a&#6166E1d&#5560E1i&#495BE0n &#5560E1| "
+  - "&#9E80E5P&#927BE4a&#8676E3l&#7970E3a&#6D6BE2d&#6166E1i&#5560E1n &#495BE0| "
+  - "&#AA86E5P&#9E80E5a&#927BE4l&#8676E3a&#7970E3d&#6D6BE2i&#6166E1n &#5560E1| "
+  - "&#B68BE6P&#AA86E5a&#9E80E5l&#927BE4a&#8676E3d&#7970E3i&#6D6BE2n &#6166E1| "
+  - "&#B68BE6P&#AA86E5a&#9E80E5l&#927BE4a&#8676E3d&#7970E3i&#6D6BE2n &#6166E1| "
+  - "&#AA86E5P&#9E80E5a&#927BE4l&#8676E3a&#7970E3d&#6D6BE2i&#6166E1n &#5560E1| "
+  - "&#9E80E5P&#927BE4a&#8676E3l&#7970E3a&#6D6BE2d&#6166E1i&#5560E1n &#495BE0| "
+  - "&#927BE4P&#8676E3a&#7970E3l&#6D6BE2a&#6166E1d&#5560E1i&#495BE0n &#5560E1| "
+  - "&#8676E3P&#7970E3a&#6D6BE2l&#6166E1a&#5560E1d&#495BE0i&#5560E1n &#6166E1| "
+  - "&#7970E3P&#6D6BE2a&#6166E1l&#5560E1a&#495BE0d&#5560E1i&#6166E1n &#6D6BE2| "
+  - "&#6D6BE2P&#6166E1a&#5560E1l&#495BE0a&#5560E1d&#6166E1i&#6D6BE2n &#7970E3| "
+  - "&#6166E1P&#5560E1a&#495BE0l&#5560E1a&#6166E1d&#6D6BE2i&#7970E3n &#8676E3| "
+  - "&#5560E1P&#495BE0a&#5560E1l&#6166E1a&#6D6BE2d&#7970E3i&#8676E3n &#927BE4| "
+  - "&#495BE0P&#5560E1a&#6166E1l&#6D6BE2a&#7970E3d&#8676E3i&#927BE4n &#9E80E5| "
+
+Paladin:
+  change-interval: 500
+  texts:
+  - "<gradient:#5363D1:#8A82D8>Paladin | "
+  - "<gradient:#5966D2:#9085D9>Paladin | "
+  - "<gradient:#5F6AD3:#9689DA>Paladin | "
+  - "<gradient:#656DD3:#9C8CDB>Paladin | "
+  - "<gradient:#6B71D4:#A28FDC>Paladin | "
+  - "<gradient:#7174D5:#A893DD>Paladin | "
+  - "<gradient:#7777D6:#AE96DD>Paladin | "
+  - "<gradient:#7D7BD7:#B49ADE>Paladin | "
+  - "<gradient:#837ED8:#BA9DDF>Paladin | "
+  - "<gradient:#8A82D8:#5363D1>Paladin | "
+  - "<gradient:#9085D9:#5966D2>Paladin | "
+  - "<gradient:#9689DA:#5F6AD3>Paladin | "
+  - "<gradient:#9C8CDB:#656DD3>Paladin | "
+  - "<gradient:#A28FDC:#6B71D4>Paladin | "
+  - "<gradient:#A893DD:#7174D5>Paladin | "
+  - "<gradient:#AE96DD:#7777D6>Paladin | "
+  - "<gradient:#B49ADE:#7D7BD7>Paladin | "
+  - "<gradient:#BA9DDF:#837ED8>Paladin | "
+  - "<gradient:#BA9DDF:#837ED8>Paladin | "
+  - "<gradient:#B49ADE:#7D7BD7>Paladin | "
+  - "<gradient:#AE96DD:#7777D6>Paladin | "
+  - "<gradient:#A893DD:#7174D5>Paladin | "
+  - "<gradient:#A28FDC:#6B71D4>Paladin | "
+  - "<gradient:#9C8CDB:#656DD3>Paladin | "
+  - "<gradient:#9689DA:#5F6AD3>Paladin | "
+  - "<gradient:#9085D9:#5966D2>Paladin | "
+  - "<gradient:#8A82D8:#5363D1>Paladin | "
+  - "<gradient:#837ED8:#BA9DDF>Paladin | "
+  - "<gradient:#7D7BD7:#B49ADE>Paladin | "
+  - "<gradient:#7777D6:#AE96DD>Paladin | "
+  - "<gradient:#7174D5:#A893DD>Paladin | "
+  - "<gradient:#6B71D4:#A28FDC>Paladin | "
+  - "<gradient:#656DD3:#9C8CDB>Paladin | "
+  - "<gradient:#5F6AD3:#9689DA>Paladin | "
+  - "<gradient:#5966D2:#9085D9>Paladin | "
+  - "<gradient:#5363D1:#8A82D8>Paladin | "
+line1:
+  change-interval: 500
+  texts:
+  - "<gradient:#0C8951:#12C62C:#0FAB3D>-----------------</gradient>"
+  - "<gradient:#0D8F4E:#12CB28:#10B03A>-----------------</gradient>"
+  - "<gradient:#0D954B:#13D125:#10B636>-----------------</gradient>"
+  - "<gradient:#0E9A47:#0C8455:#11BB33>-----------------</gradient>"
+  - "<gradient:#0EA044:#0B7E58:#11C12F>-----------------</gradient>"
+  - "<gradient:#0FA540:#0C8455:#12C62C>-----------------</gradient>"
+  - "<gradient:#0FAB3D:#0C8951:#12CB28>-----------------</gradient>"
+  - "<gradient:#10B03A:#0D8F4E:#13D125>-----------------</gradient>"
+  - "<gradient:#10B636:#0D954B:#13D621>-----------------</gradient>"
+  - "<gradient:#11BB33:#0E9A47:#0B7E58>-----------------</gradient>"
+  - "<gradient:#11C12F:#0EA044:#0C8455>-----------------</gradient>"
+  - "<gradient:#12C62C:#0FA540:#0C8951>-----------------</gradient>"
+  - "<gradient:#12CB28:#0FAB3D:#0D8F4E>-----------------</gradient>"
+  - "<gradient:#13D125:#10B03A:#0D954B>-----------------</gradient>"
+  - "<gradient:#13D621:#10B636:#0E9A47>-----------------</gradient>"
+  - "<gradient:#0B7E58:#11BB33:#0EA044>-----------------</gradient>"
+  - "<gradient:#0C8455:#11C12F:#0FA540>-----------------</gradient>"
+  - "<gradient:#0C8951:#12C62C:#0FAB3D>-----------------</gradient>"
+  - "<gradient:#0D8F4E:#12CB28:#10B03A>-----------------</gradient>"
+  - "<gradient:#0D954B:#13D125:#10B636>-----------------</gradient>"
+  - "<gradient:#0E9A47:#0C8455:#11BB33>-----------------</gradient>"
+  - "<gradient:#0EA044:#0B7E58:#11C12F>-----------------</gradient>"
+  - "<gradient:#0FA540:#0C8455:#12C62C>-----------------</gradient>"
+  - "<gradient:#0FAB3D:#0C8951:#12CB28>-----------------</gradient>"
+  - "<gradient:#10B03A:#0D8F4E:#13D125>-----------------</gradient>"
+  - "<gradient:#10B636:#0D954B:#13D621>-----------------</gradient>"
+  - "<gradient:#11BB33:#0E9A47:#0B7E58>-----------------</gradient>"
+  - "<gradient:#11C12F:#0EA044:#0C8455>-----------------</gradient>"
+  - "<gradient:#12C62C:#0FA540:#0C8951>-----------------</gradient>"
+  - "<gradient:#12CB28:#0FAB3D:#0D8F4E>-----------------</gradient>"
+  - "<gradient:#13D125:#10B03A:#0D954B>-----------------</gradient>"
+  - "<gradient:#13D621:#10B636:#0E9A47>-----------------</gradient>"
+  
+line2:
+  change-interval: 500
+  texts:
+  - "<gradient:#12CB28:#0D8F4E:#0FAB3D>-----------------</gradient>"
+  - "<gradient:#12C62C:#0C8951:#0FA540>-----------------</gradient>"
+  - "<gradient:#11C12F:#0C8455:#0EA044>-----------------</gradient>"
+  - "<gradient:#11BB33:#13D125:#0E9A47>-----------------</gradient>"
+  - "<gradient:#10B636:#13D621:#0D954B>-----------------</gradient>"
+  - "<gradient:#10B03A:#13D125:#0D8F4E>-----------------</gradient>"
+  - "<gradient:#0FAB3D:#12CB28:#0C8951>-----------------</gradient>"
+  - "<gradient:#0FA540:#12C62C:#0C8455>-----------------</gradient>"
+  - "<gradient:#0EA044:#11C12F:#0B7E58>-----------------</gradient>"
+  - "<gradient:#0E9A47:#11BB33:#13D621>-----------------</gradient>"
+  - "<gradient:#0D954B:#10B636:#13D125>-----------------</gradient>"
+  - "<gradient:#0D8F4E:#10B03A:#12CB28>-----------------</gradient>"
+  - "<gradient:#0C8951:#0FAB3D:#12C62C>-----------------</gradient>"
+  - "<gradient:#0C8455:#0FA540:#11C12F>-----------------</gradient>"
+  - "<gradient:#0B7E58:#0EA044:#11BB33>-----------------</gradient>"
+  - "<gradient:#13D621:#0E9A47:#10B636>-----------------</gradient>"
+  - "<gradient:#13D125:#0D954B:#10B03A>-----------------</gradient>"
+  - "<gradient:#12CB28:#0D8F4E:#0FAB3D>-----------------</gradient>"
+  - "<gradient:#12C62C:#0C8951:#0FA540>-----------------</gradient>"
+  - "<gradient:#11C12F:#0C8455:#0EA044>-----------------</gradient>"
+  - "<gradient:#11BB33:#13D125:#0E9A47>-----------------</gradient>"
+  - "<gradient:#10B636:#13D621:#0D954B>-----------------</gradient>"
+  - "<gradient:#10B03A:#13D125:#0D8F4E>-----------------</gradient>"
+  - "<gradient:#0FAB3D:#12CB28:#0C8951>-----------------</gradient>"
+  - "<gradient:#0FA540:#12C62C:#0C8455>-----------------</gradient>"
+  - "<gradient:#0EA044:#11C12F:#0B7E58>-----------------</gradient>"
+  - "<gradient:#0E9A47:#11BB33:#13D621>-----------------</gradient>"
+  - "<gradient:#0D954B:#10B636:#13D125>-----------------</gradient>"
+  - "<gradient:#0D8F4E:#10B03A:#12CB28>-----------------</gradient>"
+  - "<gradient:#0C8951:#0FAB3D:#12C62C>-----------------</gradient>"
+  - "<gradient:#0C8455:#0FA540:#11C12F>-----------------</gradient>"
+  - "<gradient:#0B7E58:#0EA044:#11BB33>-----------------</gradient>"
+  
+evb0:
+  change-interval: 500
+  texts:
+  - "<gradient:#10B934:#13D621:#0E9C46>Evb0Rev</gradient>"
+  - "<gradient:#0FAB3D:#12C82A:#0C8D4F>Evb0Rev</gradient>"
+  - "<gradient:#0E9C46:#10B934:#12C82A>Evb0Rev</gradient>"
+  - "<gradient:#0C8D4F:#0FAB3D:#13D621>Evb0Rev</gradient>"
+  - "<gradient:#0B7E58:#0E9C46:#12C82A>Evb0Rev</gradient>"
+  - "<gradient:#13D621:#0C8D4F:#10B934>Evb0Rev</gradient>"
+  - "<gradient:#12C82A:#0B7E58:#0FAB3D>Evb0Rev</gradient>"
+  - "<gradient:#10B934:#13D621:#0E9C46>Evb0Rev</gradient>"
+  - "<gradient:#0FAB3D:#12C82A:#0C8D4F>Evb0Rev</gradient>"
+  - "<gradient:#0E9C46:#10B934:#12C82A>Evb0Rev</gradient>"
+  - "<gradient:#0C8D4F:#0FAB3D:#13D621>Evb0Rev</gradient>"
+  - "<gradient:#0B7E58:#0E9C46:#12C82A>Evb0Rev</gradient>"

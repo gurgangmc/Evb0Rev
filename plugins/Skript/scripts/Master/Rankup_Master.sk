@@ -1,0 +1,36 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on region enter:
+	if event-region is "masterrankup":
+		if {ranks::%uuid of player%} is "pro":
+			if {achievement::master::%uuid of player%} is not set:
+				set {_t} to text component from "%player% has made achievement &a[MASTER!!!]"
+				set hover event of {_t} to a new hover event showing "&aMaster &8- &7Achieve Master Status"
+				broadcast component {_t}
+			add 1 to {achievement::master::%uuid of player%}
+			send "&8[&6MASTER&8] &rYou have become a master this is your &e#%{achievement::master::%uuid of player%} ? 0% &ras Master"
+			if {subrank::grandmaster::%uuid of player%} is set:
+				execute console command "ranks %player% grandmaster"
+				stop
+			else:
+				execute console command "ranks %player% master"
+				stop
+				
+on death:
+	if region at victim contains "master-course":
+		if {achievement::failure::%uuid of victim%} is not set:
+			set {_t} to text component from "%victim% has made achievement &a[Failure]"
+			set hover event of {_t} to a new hover event showing "&aFailure &8- &7Die on the master course"
+			broadcast component {_t}
+		
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

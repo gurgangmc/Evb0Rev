@@ -1,0 +1,32 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on chat:
+	if {ranks::%uuid of player%} is "champion":
+		set {_msg} to message
+		set {_c} to "<#00a8a8>"
+		set message to "<#00a8a8>%{_msg}%"
+		set {colorchat::%uuid of player%} to {_c}
+		stop
+	if {ranks::%uuid of player%} is "noob":
+		set {_msg} to message
+		set {_c} to "&7"
+		set message to "&7%{_msg}%"
+		set {colorchat::%uuid of player%} to {_c}
+		stop
+	else:
+		set {_msg} to message
+		set {_c} to "&r"
+		set message to "&r%{_msg}%"
+		set {colorchat::%uuid of player%} to {_c}
+		stop
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

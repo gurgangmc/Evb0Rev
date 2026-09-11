@@ -1,0 +1,23 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on chat:
+	set {_msg} to uncolored message
+	{_msg} contains "[item]"
+	set {_msg} to message
+	set {_n} to name of player's tool
+	if {_n} is set:
+		replace all "[item]" with "&8[&e%amount of player's tool%x &r%{_n}%&8]%{colorchat::%uuid of player%} ? "&r"%" in {_msg}
+	else:
+		replace all "[item]" with "&e%amount of player's tool%x &r%player's tool%%{colorchat::%uuid of player%} ? "&r"%"  in {_msg}
+	set message to {_msg}
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

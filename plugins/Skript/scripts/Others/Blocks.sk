@@ -1,0 +1,67 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on block place:
+	player is not op
+	if name of player's tool is "&e&lInfinity Plank":
+		stop
+	else:
+		send "[&c&lX&r] You do not have this block!"
+		cancel event
+		
+on block place:
+	set {_rg::*} to region at event-block
+	loop {_rg::*}:
+		set {_t} to "%loop-value%"
+		replace all "-" with " " in {_t}
+		if {_t} contains "build":
+			stop
+		if {_t} contains "event":
+			stop
+	if player has permission "evb0.admin.build":
+		if {admin::jailbreak::%uuid of player%} is set:
+			stop
+		else:
+			cancel event
+	cancel event
+
+on block break:
+	set {_rg::*} to region at event-block
+	loop {_rg::*}:
+		set {_t} to "%loop-value%"
+		replace all "-" with " " in {_t}
+		if {_t} contains "build":
+			stop
+		if {_t} contains "event":
+			stop
+	if player has permission "evb0.admin.build":
+		if {admin::jailbreak::%uuid of player%} is set:
+			stop
+		else:
+			cancel event
+	cancel event
+
+command admin:jailbreak:
+	permission: op
+	trigger:
+		if {admin::jailbreak::%uuid of player%} is set:
+			delete {admin::jailbreak::%uuid of player%}
+			send "&cYou can no longer build!"
+		else:
+			set {admin::jailbreak::%uuid of player%} to true
+			send "&aYou can now build!"
+			stop
+
+on sign edit:
+	player is not op
+	cancel event
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

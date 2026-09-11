@@ -1,0 +1,73 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command /rules:
+    trigger:
+        set {_gui} to chest inventory with 3 rows named "&8Parkour Rules"
+        set slot 11 of {_gui} to feather named "&aGeneral Rules" with lore "&7Click to view"
+        set slot 13 of {_gui} to slime ball named "&bParkour Rules" with lore "&7Click to view"
+        set slot 15 of {_gui} to gold block named "&6Rewards" with lore "&7Click to view"
+        open {_gui} to player
+
+on inventory click:
+    if name of event-inventory is "&8Parkour Rules":
+        cancel event
+        if clicked slot is 11:
+            set {_gui} to chest inventory with 3 rows named "&aGeneral Rules"
+            set slot 11 of {_gui} to paper named "&fBe respectful"
+            set slot 13 of {_gui} to paper named "&fNo spamming"
+            set slot 15 of {_gui} to barrier named "&cBack"
+            open {_gui} to player
+        if clicked slot is 13:
+            set {_gui} to chest inventory with 3 rows named "&bParkour Rules"
+            set slot 11 of {_gui} to paper named "&fNo cheating"
+            set slot 13 of {_gui} to paper named "&fNo skipping"
+            set slot 15 of {_gui} to barrier named "&cBack"
+            open {_gui} to player
+        if clicked slot is 15:
+            set {_gui} to chest inventory with 3 rows named "&6Rewards"
+            set slot 11 of {_gui} to paper named "&fNo exploiting"
+            set slot 13 of {_gui} to paper named "&fPlay fair"
+            set slot 15 of {_gui} to barrier named "&cBack"
+            open {_gui} to player
+
+    if name of event-inventory is "&aGeneral Rules":
+        cancel event
+        if clicked slot is 15:
+            set {_gui} to chest inventory with 3 rows named "&8Parkour Rules"
+            set slot 11 of {_gui} to feather named "&aGeneral Rules" with lore "&7Click to view"
+            set slot 13 of {_gui} to slime ball named "&bParkour Rules" with lore "&7Click to view"
+            set slot 15 of {_gui} to gold block named "&6Rewards" with lore "&7Click to view"
+            open {_gui} to player
+
+    if name of event-inventory is "&bParkour Rules":
+        cancel event
+        if clicked slot is 15:
+            set {_gui} to chest inventory with 3 rows named "&8Parkour Rules"
+            set slot 11 of {_gui} to feather named "&aGeneral Rules" with lore "&7Click to view"
+            set slot 13 of {_gui} to slime ball named "&bParkour Rules" with lore "&7Click to view"
+            set slot 15 of {_gui} to gold block named "&6Rewards" with lore "&7Click to view"
+            open {_gui} to player
+
+    if name of event-inventory is "&6Rewards":
+        cancel event
+        if clicked slot is 15:
+            set {_gui} to chest inventory with 3 rows named "&8Parkour Rules"
+            set slot 11 of {_gui} to feather named "&aGeneral Rules" with lore "&7Click to view"
+            set slot 13 of {_gui} to slime ball named "&bParkour Rules" with lore "&7Click to view"
+            set slot 15 of {_gui} to gold block named "&6Rewards" with lore "&7Click to view"
+            open {_gui} to player
+
+on inventory drag:
+    if name of event-inventory is "&8Parkour Rules" or "&aGeneral Rules" or "&bParkour Rules" or "&6Rewards":
+        cancel event
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

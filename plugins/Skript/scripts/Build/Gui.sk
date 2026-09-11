@@ -1,0 +1,71 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on inventory click:
+    if name of event-inventory is "&e&lInfinity Block Selector":
+        cancel event	
+on inventory click:
+    if event-inventory = (metadata tag "ForeverGui" of player):
+        cancel event
+        set {_rg} to "%region at player%"
+        replace all "-" with " " in {_rg}
+        if {_rg} does not contain "build":
+            cancel event
+            close player's inventory
+            stop
+        set {_u} to uuid of player
+
+        clear {_content::*}
+        add 10 to {_content::*}
+        add 11 to {_content::*}
+        add 12 to {_content::*}
+        add 13 to {_content::*}
+        add 14 to {_content::*}
+        add 15 to {_content::*}
+        add 16 to {_content::*}
+        add 19 to {_content::*}
+        add 20 to {_content::*}
+        add 21 to {_content::*}
+        add 22 to {_content::*}
+        add 23 to {_content::*}
+        add 24 to {_content::*}
+        add 25 to {_content::*}
+        add 25 to {_content::*}
+        add 28 to {_content::*}
+        add 29 to {_content::*}
+        add 30 to {_content::*}
+        add 31 to {_content::*}
+        add 32 to {_content::*}
+        add 33 to {_content::*}
+        add 34 to {_content::*}
+        add 37 to {_content::*}
+        add 38 to {_content::*}
+        add 40 to {_content::*}
+        add 42 to {_content::*}
+        add 43 to {_content::*}
+
+        if {_content::*} contains event-slot:
+            if event-item is set:
+                name of event-item is not "&7Buy this at the Parkour Mall"
+                set {_chosen} to type of event-item
+                set {build::forever::selected::%{_u}%} to {_chosen}
+                fb_purge(player)
+                set {_slot} to {build::forever::slot::%{_u}%}
+                set {_new} to {_chosen} named fb_name() with lore fb_lore_line()
+                set {_new} to glowingItem({_new})
+                if {_slot} >= 0:
+                    set slot {_slot} of player's inventory to {_new}
+                else:
+                    give 1 of {_new} to player
+
+                close player's inventory
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

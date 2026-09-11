@@ -1,0 +1,167 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+function fb_name() :: text:
+    return "&e&lInfinity Plank"
+
+function fb_lore_line() :: texts:
+    return "&7only useable in &bParkour Practice" and "&7Shift + Left Click to shift blocks"
+
+function glowingItem(i: item) :: item: 
+    set {_glowingItem} to {_i} 
+    enchant {_glowingItem} with mending 
+    add hide enchants to item flags of {_glowingItem} 
+    return {_glowingItem}
+
+on load:
+    clear {build::pool::*}
+    add oak planks to {build::pool::*}
+    add oak stairs to {build::pool::*}
+    add oak slab to {build::pool::*}
+    add ladder to {build::pool::*}
+    add oak log to {build::pool::*}
+    add oak fence to {build::pool::*}
+    add oak fence gate to {build::pool::*}
+    add oak trapdoor to {build::pool::*}
+    add brewing stand to {build::pool::*}
+    add cake to {build::pool::*}
+    add chain to {build::pool::*}
+    add flower pot to {build::pool::*}
+    add glass pane to {build::pool::*}
+    add green candle to {build::pool::*}
+    add honey block to {build::pool::*}
+    add iron bars to {build::pool::*}
+    add jukebox to {build::pool::*}
+    add magma block to {build::pool::*}
+    add oak door to {build::pool::*}
+    add piston to {build::pool::*}	
+    add slime block to {build::pool::*}	
+    add soul sand to {build::pool::*} 
+    add stone brick wall to {build::pool::*} 
+
+    clear {build::slots::*}
+    add 10 to {build::slots::*}
+    add 11 to {build::slots::*}
+    add 12 to {build::slots::*}
+    add 13 to {build::slots::*}
+    add 14 to {build::slots::*}
+    add 15 to {build::slots::*}
+    add 16 to {build::slots::*}
+    add 19 to {build::slots::*}
+    add 20 to {build::slots::*}
+    add 21 to {build::slots::*}
+    add 22 to {build::slots::*}
+    add 23 to {build::slots::*}
+    add 24 to {build::slots::*}
+    add 25 to {build::slots::*}
+    add 28 to {build::slots::*}
+    add 29 to {build::slots::*}
+    add 30 to {build::slots::*}
+    add 31 to {build::slots::*}
+    add 32 to {build::slots::*}
+    add 33 to {build::slots::*}
+    add 34 to {build::slots::*}
+    add 37 to {build::slots::*}
+    add 38 to {build::slots::*}
+    add 40 to {build::slots::*}
+    add 42 to {build::slots::*}
+    add 43 to {build::slots::*}
+
+function fb_find_slot(p: player) :: number:
+    set {_inv} to {_p}'s inventory
+    set {_found} to -1
+    loop 36 times:
+        set {_s} to loop-value - 1
+        set {_it} to slot {_s} of {_inv}
+        if {_it} is set:
+            set {_nm} to name of {_it}
+            if {_nm} is fb_name():
+                set {_ln::*} to lore of {_it}
+                if {_ln::*} is fb_lore_line():
+                    set {_found} to {_s}
+    return {_found}
+
+function fb_give_of_type(p: player, t: itemtype):
+    set {_fb} to {_t} named fb_name() with lore fb_lore_line()
+    set {_fb} to glowingItem({_fb})
+    give 1 of {_fb} to {_p}
+	
+function fb_replace_of_type(p: player, t: itemtype):
+    set {_fb} to {_t} named fb_name() with lore fb_lore_line()
+    set {_fb} to glowingItem({_fb})
+    set {_p}'s tool to 1 of {_fb} 
+	
+function fb_purge(p: player):
+    set {_inv} to {_p}'s inventory
+    loop 41 times:
+        set {_s} to loop-value - 1
+        delete {_it}
+        if slot {_s} of {_inv} is not air:
+            set {_it} to slot {_s} of {_inv}
+        if {_it} is set:
+            set {_nm} to name of {_it}
+            if {_nm} is fb_name():
+                set {_ln::*} to lore of {_it}
+                if {_ln::*} is fb_lore_line():
+                    remove {_it} from {_inv}
+
+
+on script load:
+    clear {mall::items::*}
+    set {mall::items::*} to "oak_fence_gate", "oak_door", "stone_brick_wall", "packed_ice", "magma_block", "soul_sand", "iron_bars", "chain", "brewing_stand", "slime_block", "honey_block", "piston", "jukebox", "flower_pot", "cake", "player_head", "green_candle", "glass_pane" and "snow"
+
+function isMallBlock(typeKey: text) :: boolean:
+    loop {mall::items::*}:
+        if loop-value is {_typeKey}:
+            return true
+    return false
+
+function isUnlocked(typeKey: text, uuid: text) :: boolean:
+    if isMallBlock({_typeKey}) is false:
+        return true
+    if {evb0::build::purchases::%{_typeKey}%::%{_uuid}%} is true:
+        return true
+    return false
+
+function fb_open_gui(p: player):
+    set metadata tag "ForeverGui" of {_p} to chest inventory with 6 rows named "&e&lInfinity Block Selector"
+    set {_inv} to metadata tag "ForeverGui" of {_p}
+    set {_uuid} to "%uuid of {_p}%"
+
+    loop 54 times:
+        set slot loop-value - 1 of {_inv} to black stained glass pane named ""
+
+    set {_sel} to {build::forever::selected::%{_uuid}%}
+    set {_total} to size of {build::slots::*}
+
+    loop {_total} times:
+        set {_i} to loop-value
+        set {_slot} to {build::slots::%{_i}%}
+
+        if {_i} <= size of {build::pool::*}:
+            set {_type} to {build::pool::%{_i}%}
+
+            # Derive the key the same way the mall uses it
+            set {_typeKey} to "%type of {_type}%"
+            replace all " " with "_" in {_typeKey}
+
+            if isUnlocked({_typeKey}, {_uuid}) is false:
+                set slot {_slot} of {_inv} to iron bars named "&7Buy this at the Parkour Mall"
+                continue
+
+            set {_it} to {_type}
+            set slot {_slot} of {_inv} to glowingItem({_it} named "&e%{_type}%" with lore "&7>> Click to select <<")
+        else:
+            set slot {_slot} of {_inv} to iron bars named "&7Buy this at the Parkour Mall"
+
+    open (metadata tag "ForeverGui" of {_p}) to {_p}
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

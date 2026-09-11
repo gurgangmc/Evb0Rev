@@ -1,0 +1,204 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+#---RANKS---#
+
+#commands
+
+command ranks <text> <text> [<text>]:
+	permission: evb0.admin.rank
+	trigger:
+		if arg-1 is "create":
+			if {evb0::ranks::*} contains arg-2:
+				send "&cThis rank already exists!"
+			if arg-3 is not set:
+				send "&cPlease enter prefix of rank!"
+				stop
+			set {_r} to arg-2
+			set {_c} to arg-3
+			if player's tool is not set:
+				send "&cPlease hold the boots of this rank!"
+				stop
+			set {_b} to player's tool
+			set {evb0::ranks::%{_r}%} to {_r}
+			set {evb0::ranks::%{_r}%::color} to {_c}
+			set {evb0::ranks::%{_r}%::boot} to {_b}
+			send "&aSuccessfully created the %{_r}% &arank!"
+			stop
+		if arg-1 is "delete":
+			if {evb0::ranks::*} does not contain arg-2:
+				send "&cThat rank does not exist!"
+				stop
+			else:
+				set {_r} to arg-2
+				send "&aSuccessfully deleted the %{_r}% &arank!"
+				delete {evb0::ranks::%{_r}%::*}
+				delete {evb0::ranks::%{_r}%}
+				stop
+			
+		set {_p} to arg-1 parsed as offline player
+		if {_p} is not set:
+			send "&cPlease enter a valid username!"
+			stop
+		set {_r} to arg-2
+		if {_r} is "master":
+			if {subrank::grandmaster::%{_p}%} is set:
+				broadcast {subrank::grandmaster::%{_p}%}
+				set {_r} to "grandmaster"
+		if {evb0::ranks::*} does not contain arg-2:
+			set {_r} to "@%arg-2% %arg-3%@"
+			replace all "--force" with "" in {_r}
+			replace all "@" with """" in {_r}
+			if arg-3 contains "--force":
+				execute console command "lp user %{_p}% meta removeprefix 80"
+				execute console command "lp user %{_p}% meta addprefix 80 %{_r}%"
+				send "&aSet player's rank to %{_r}%"
+				stop
+			else:
+				send "&cThis rank is not set! add --force at end to add it."
+				stop
+		else:
+			execute console command "lp user %{_p}% meta removeprefix 80"
+			execute console command "lp user %{_p}% parent remove %{ranks::%{_p}%}%"
+			execute console command "lp user %{_p}% parent add %{_r}%"
+			execute console command "lp user %{_p}% parent remove default"
+			if {_p} is online:
+				set {_p}'s boots to {evb0::ranks::%{_r}%::boot}
+			else:
+				set {boot::rank::pending::%{_p}%} to {evb0::ranks::%{_r}%::boot}
+			set {ranks::%{_p}%} to {_r}
+			send "&aSet player's rank to %{_r}%"
+		
+on join:
+	if {boot::rank::pending::%uuid of player%} is set:
+		set player's boots to {boot::rank::pending::%uuid of player%}
+		delete {boot::rank::pending::%uuid of player%}
+		
+		
+		
+		
+on respawn:
+	if {ranks::%uuid of player%} is "supernoob":
+		wait 1 tick
+		teleport player to {location::darkzone}
+	if {ranks::%uuid of player%} is "noob":
+		wait 1 tick
+		teleport player to {location::prison}
+		set player's hunger level to 3
+	if {ranks::%uuid of player%} is "pro":
+		execute console command "ranks %player% noob"
+		wait 1 tick
+		teleport player to {location::noob}
+		set player's hunger level to 3
+		stop
+	if {ranks::%uuid of player%} is "master":
+		wait 1 tick
+		teleport player to {location::pro}
+		execute console command "ranks %player% pro"
+		stop
+	if {ranks::%uuid of player%} is "grandmaster":
+		wait 1 tick
+		if {keeprank::%uuid of player%} is set:
+			teleport player to {location::master}
+			stop
+		teleport player to {location::pro}
+		execute console command "ranks %player% pro"
+		execute console command "lp user %player% parent remove grandmaster"
+		stop
+		
+	if {ranks::%uuid of player%} is "gladiator":
+		wait 1 tick
+		teleport player to {location::master}
+	if {ranks::%uuid of player%} is "knight":
+		wait 1 tick
+		teleport player to {location::captain}
+	if {ranks::%uuid of player%} is "captain":
+		wait 1 tick
+		teleport player to {location::captain}
+	if {ranks::%uuid of player%} is "champion":
+		wait 1 tick
+		teleport player to {location::captain}
+	if {ranks::%uuid of player%} is "paladin":
+		wait 1 tick
+		teleport player to {location::captain}
+	if {ranks::%uuid of player%} is "godness":
+		wait 1 tick
+		teleport player to {location::captain}
+	if {ranks::%uuid of player%} is "god":
+		wait 1 tick
+		teleport player to {location::captain}
+
+on command:
+	if full command contains "god" or "group.god" or "editor" or "applyedits":
+		if player is "AnthonyStarr":
+			cancel event
+
+command promote <offline player>:
+	permission: evb0.champion.promote
+	cooldown: 10 seconds
+	cooldown message: &cPlease wait %remaining time% before promoting someone!
+	cooldown bypass: op
+	trigger:
+		if arg-1 is player:
+			send "&cYou cannot promote yourself!"
+			stop
+		set {_r} to {ranks::%uuid of arg%}
+		if {_r} is not set:
+			send "&cAn unknown error occured! Please contact and admin and ask them to reset %arg-1%'s rank!"
+			stop
+		if {_r} is "noob":
+			execute console command "ranks %arg-1% pro"
+			send "&8[&bPROMOTION&8]&r Promoted %arg-1% to Pro"
+		if {_r} is "pro":
+			execute console command "ranks %arg-1% master"
+			send "&8[&bPROMOTION&8]&r Promoted %arg-1% to &6Master"
+		if {_r} is "master" or "grandmaster":
+			execute console command "ranks %arg-1% captain"
+			send "&8[&bPROMOTION&8]&r Promoted %arg-1% to &cCaptain"
+		else:
+			send "&cYou cannot promote this person any higher!"
+
+command demote <offline player>:
+	permission: evb0.champion.demote
+	cooldown: 10 seconds
+	cooldown message: &cPlease wait %remaining time% before demoting someone!
+	cooldown bypass: op
+	trigger:
+		if arg-1 is player:
+			send "&cYou cannot demote yourself!"
+			stop
+		set {_r} to {ranks::%uuid of arg%}
+		if {_r} is not set:
+			send "&cAn unknown error occured! Please contact and admin and ask them to reset %arg-1%'s rank!"
+			stop
+		if {_r} is "pro":
+			execute console command "ranks %arg-1% noob"
+			send "&8[&cDEMOTION&8]&r Demoted %arg-1% to &7Noob"
+		if {_r} is "master" or "grandmaster":
+			execute console command "ranks %arg-1% pro"
+			send "&8[&cDEMOTION&8]&r Demoted %arg-1% to Pro"
+		if {_r} is "captain":
+			execute console command "ranks %arg-1% master"
+			send "&8[&cDEMOTION&8]&r Demoted %arg-1% to &6Master"
+		else:
+			send "&cYou cannot demote this person any lower!"
+
+
+		
+on player move:
+	if player's y-coordinate is below -39:
+		world of player is "evb0"
+		if region at event-player contains "darkzone" or "darkzone-exit" or "darkzone-shop":
+			stop
+		kill player
+		
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

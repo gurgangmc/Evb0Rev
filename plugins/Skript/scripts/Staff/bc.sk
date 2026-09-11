@@ -1,0 +1,38 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command /bc <text>:
+    permission: staff
+    permission message: &cYou do not have permission to use this.
+    trigger:
+        broadcast "<#00FF07>&lE<#01E408>&lv<#01C809>&lB<#02AD0A>&l0&7➞&f&l %arg%"
+		
+command /evbo <text>:
+    permission: staff
+    permission message: &cYou do not have permission to use this.
+    trigger:
+        broadcast "&b&lEvbo&f: &7%arg%"		
+		
+command /oculus <text>:
+    permission: staff
+    permission message: &cYou do not have permission to use this.
+    trigger:
+        broadcast "<#CD0F0F>&lO<#B70E0E>&lC<#A10D0D>&lU<#8B0D0D>&lL<#750C0C>&lU<#5F0B0B>&lS &7➞ &4&l%arg%"
+
+command ad <text>:
+	permission: skript.ad
+	permission message: &cYoudo not have permission to use this.
+	cooldown: 30 minutes
+	cooldown message: &cYou have already sent an advertisement! Please wait %remaining time%
+	trigger:
+		broadcast "&6&lAdvertisement &7➞ &f&l%arg%"
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

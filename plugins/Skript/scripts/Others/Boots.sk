@@ -1,0 +1,21 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on inventory click:
+    if event-inventory is player's inventory:
+        if player's boots is not air:
+            if event-slot is player's boots:
+                cancel event
+				
+on item damage:
+    cancel event
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

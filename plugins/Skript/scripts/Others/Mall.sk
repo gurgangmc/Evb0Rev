@@ -1,0 +1,195 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on region enter:
+	set {_rg} to "%event-region%"
+	replace all "-" with " " in {_rg}
+	if {_rg} contains "mall":
+		send title "&eMall" with subtitle "&7Welcome to Parkour Mall"
+		
+
+	
+function mallItem(mat: item, displayName: text, cost: number, key: text, uuid: text) :: item:
+    if {evb0::build::purchases::%{_key}%::%{_uuid}%} is true:
+        return {_mat} named {_displayName} with lore "&7Cost: &e%{_cost}% Jumps", " " and "&cYou have already purchased this!"
+    return {_mat} named {_displayName} with lore "&7Costs &e%{_cost}% Jumps", " " and "&aClick to purchase"
+
+on right click on oak wall sign:
+    set {_rg} to "%region at event-block%"
+    replace all "-" with " " in {_rg}
+    if {_rg} contains "mall":
+        cancel event
+        set {_uuid} to "%uuid of player%"
+        set metadata tag "Mall" of player to chest inventory with 5 rows named "&eParkour Mall"
+        set {_inv} to metadata tag "Mall" of player
+        loop 45 times:
+            set slot loop-value - 1 of {_inv} to gray stained glass pane named " "
+
+        set {mall::data::%{_uuid}%::10::key} to "oak_fence_gate"
+        set {mall::data::%{_uuid}%::10::cost} to 500
+        set {mall::data::%{_uuid}%::10::name} to "Oak Fence Gate"
+        set slot 10 of {_inv} to mallItem(oak fence gate, "&fOak Fence Gate &8[&7Parkour Practice&8]", 500, "oak_fence_gate", {_uuid})
+
+        set {mall::data::%{_uuid}%::11::key} to "oak_door"
+        set {mall::data::%{_uuid}%::11::cost} to 500
+        set {mall::data::%{_uuid}%::11::name} to "Oak Door"
+        set slot 11 of {_inv} to mallItem(oak door, "&fOak Door &8[&7Parkour Practice&8]", 500, "oak_door", {_uuid})
+
+        set {mall::data::%{_uuid}%::12::key} to "stone_brick_wall"
+        set {mall::data::%{_uuid}%::12::cost} to 300
+        set {mall::data::%{_uuid}%::12::name} to "Stone Brick Wall"
+        set slot 12 of {_inv} to mallItem(stone brick wall, "&fStone Brick Wall &8[&7Parkour Practice&8]", 300, "stone_brick_wall", {_uuid})
+
+        set {mall::data::%{_uuid}%::13::key} to "packed_ice"
+        set {mall::data::%{_uuid}%::13::cost} to 800
+        set {mall::data::%{_uuid}%::13::name} to "Packed Ice"
+        set slot 13 of {_inv} to mallItem(packed ice, "&fPacked Ice &8[&7Parkour Practice&8]", 800, "packed_ice", {_uuid})
+
+        set {mall::data::%{_uuid}%::14::key} to "magma_block"
+        set {mall::data::%{_uuid}%::14::cost} to 600
+        set {mall::data::%{_uuid}%::14::name} to "Magma Block"
+        set slot 14 of {_inv} to mallItem(magma block, "&fMagma Block &8[&7Parkour Practice&8]", 600, "magma_block", {_uuid})
+
+        set {mall::data::%{_uuid}%::15::key} to "soul_sand"
+        set {mall::data::%{_uuid}%::15::cost} to 400
+        set {mall::data::%{_uuid}%::15::name} to "Soul Sand"
+        set slot 15 of {_inv} to mallItem(soul sand, "&fSoul Sand &8[&7Parkour Practice&8]", 400, "soul_sand", {_uuid})
+
+        set {mall::data::%{_uuid}%::16::key} to "iron_bars"
+        set {mall::data::%{_uuid}%::16::cost} to 300
+        set {mall::data::%{_uuid}%::16::name} to "Iron Bars"
+        set slot 16 of {_inv} to mallItem(iron bars, "&fIron Bars &8[&7Parkour Practice&8]", 300, "iron_bars", {_uuid})
+
+        set {mall::data::%{_uuid}%::19::key} to "chain"
+        set {mall::data::%{_uuid}%::19::cost} to 500
+        set {mall::data::%{_uuid}%::19::name} to "Chain"
+        set slot 19 of {_inv} to mallItem(chain, "&fChain &8[&7Parkour Practice&8]", 500, "chain", {_uuid})
+
+        set {mall::data::%{_uuid}%::20::key} to "brewing_stand"
+        set {mall::data::%{_uuid}%::20::cost} to 400
+        set {mall::data::%{_uuid}%::20::name} to "Brewing Stand"
+        set slot 20 of {_inv} to mallItem(brewing stand, "&fBrewing Stand &8[&7Parkour Practice&8]", 400, "brewing_stand", {_uuid})
+
+        set {mall::data::%{_uuid}%::21::key} to "slime_block"
+        set {mall::data::%{_uuid}%::21::cost} to 1000
+        set {mall::data::%{_uuid}%::21::name} to "Slime Block"
+        set slot 21 of {_inv} to mallItem(slime block, "&fSlime Block &8[&7Parkour Practice&8]", 1000, "slime_block", {_uuid})
+
+        set {mall::data::%{_uuid}%::22::key} to "honey_block"
+        set {mall::data::%{_uuid}%::22::cost} to 1000
+        set {mall::data::%{_uuid}%::22::name} to "Honey Block"
+        set slot 22 of {_inv} to mallItem(honey block, "&fHoney Block &8[&7Parkour Practice&8]", 1000, "honey_block", {_uuid})
+
+        set {mall::data::%{_uuid}%::23::key} to "piston"
+        set {mall::data::%{_uuid}%::23::cost} to 700
+        set {mall::data::%{_uuid}%::23::name} to "Piston"
+        set slot 23 of {_inv} to mallItem(piston, "&fPiston &8[&7Parkour Practice&8]", 700, "piston", {_uuid})
+
+        set {mall::data::%{_uuid}%::24::key} to "jukebox"
+        set {mall::data::%{_uuid}%::24::cost} to 200
+        set {mall::data::%{_uuid}%::24::name} to "Jukebox"
+        set slot 24 of {_inv} to mallItem(jukebox, "&fJukebox &8[&7Parkour Practice&8]", 200, "jukebox", {_uuid})
+
+        set {mall::data::%{_uuid}%::25::key} to "flower_pot"
+        set {mall::data::%{_uuid}%::25::cost} to 200
+        set {mall::data::%{_uuid}%::25::name} to "Flower Pot"
+        set slot 25 of {_inv} to mallItem(flower pot, "&fFlower Pot &8[&7Parkour Practice&8]", 200, "flower_pot", {_uuid})
+
+        set {mall::data::%{_uuid}%::28::key} to "cake"
+        set {mall::data::%{_uuid}%::28::cost} to 300
+        set {mall::data::%{_uuid}%::28::name} to "Cake"
+        set slot 28 of {_inv} to mallItem(cake, "&fCake &8[&7Parkour Practice&8]", 300, "cake", {_uuid})
+
+        set {mall::data::%{_uuid}%::29::key} to "player_head"
+        set {mall::data::%{_uuid}%::29::cost} to 1500
+        set {mall::data::%{_uuid}%::29::name} to "Player Head"
+        set slot 29 of {_inv} to mallItem(player head, "&fPlayer Head &8[&7Parkour Practice&8]", 1500, "player_head", {_uuid})
+
+        set {mall::data::%{_uuid}%::31::key} to "green_candle"
+        set {mall::data::%{_uuid}%::31::cost} to 200
+        set {mall::data::%{_uuid}%::31::name} to "Green Candle"
+        set slot 31 of {_inv} to mallItem(green candle, "&fGreen Candle &8[&7Parkour Practice&8]", 200, "candle", {_uuid})
+
+        set {mall::data::%{_uuid}%::33::key} to "snow"
+        set {mall::data::%{_uuid}%::33::cost} to 100
+        set {mall::data::%{_uuid}%::33::name} to "Snow"
+        set slot 33 of {_inv} to mallItem(snow, "&fSnow &8[&7Parkour Practice&8]", 100, "glass_pane", {_uuid})
+
+        set {mall::data::%{_uuid}%::34::key} to "glass_pane"
+        set {mall::data::%{_uuid}%::34::cost} to 100
+        set {mall::data::%{_uuid}%::34::name} to "Glass Pane"
+        set slot 34 of {_inv} to mallItem(glass pane, "&fGlass Pane &8[&7Parkour Practice&8]", 100, "glass_pane", {_uuid})
+
+        if {evb0::bucket::%uuid of player%} is not set:
+            if player has permission "evb0.master.wb":
+			
+                set slot 39 of {_inv} to glowingItem(water bucket named "&6Master Water Bucket" with lore "&7Can Only be claimed by &6Masters" and "&7When placed, will negate all fall damage." and "&aCLICK TO CLAIM")
+            else:
+			
+                set slot 39 of {_inv} to water bucket named "&6Master Water Bucket" with lore "&7Can Only be claimed by &6Masters" and "&7When placed, will negate all fall damage." and "&cYou must be &6Master+ &cto own this!"
+        else:
+			
+            set slot 39 of {_inv} to water bucket named "&6Master Water Bucket" with lore "&7Can Only be claimed by &6Masters" and "&7When placed, will negate all fall damage." and "&cYou already own this!"
+				
+
+        set slot 41 of {_inv} to diamond boots named "<#5454fc>Your Jumps: &r%{jumps::%{_uuid}%} ? 0%"
+        open (metadata tag "Mall" of player) to player
+
+on inventory click:
+    if name of event-inventory is "&eParkour Mall":
+        cancel event
+        set {_uuid} to "%uuid of player%"
+        set {_slot} to index of event-slot
+        set {_key} to {mall::data::%{_uuid}%::%{_slot}%::key}
+        if {_key} is not set:
+            if {_slot} is 39:
+                if {evb0::bucket::%uuid of player%} is not set:
+                    if player has permission "evb0.master.wb":
+                        give player glowingItem(water bucket named "&6%player%'s Master Water Bucket" with lore "&7Your very own &6Master Water Bucket")
+                        set {evb0::bucket::%uuid of player%} to true
+                        send "&8[&ePARKOUR MALL&8] &rYou have been given a water bucket!" to player
+                        close player's inventory
+                        stop
+            stop
+        if {evb0::build::purchases::%{_key}%::%{_uuid}%} is true:
+            send "&8[&ePARKOUR MALL&8] &cYou already own this!" to player
+            stop
+        set {_cost} to {mall::data::%{_uuid}%::%{_slot}%::cost}
+        set {_name} to {mall::data::%{_uuid}%::%{_slot}%::name}
+        if {jumps::%{_uuid}%} is not set:
+		
+            send "&8[&ePARKOUR MALL&8] &cNot enough Jumps! You need &e%{_cost}% &cbut have &e%{jumps::%{_uuid}%} ? 0%&c." to player
+        if {jumps::%{_uuid}%} < {_cost}:
+            send "&8[&ePARKOUR MALL&8] &cNot enough Jumps! You need &e%{_cost}% &cbut have &e%{jumps::%{_uuid}%} ? 0%&c." to player
+            stop
+        subtract {_cost} from {jumps::%{_uuid}%}
+        set {evb0::build::purchases::%{_key}%::%{_uuid}%} to true
+		
+        add 1 to {shop::purchases::%{_uuid}%}
+        set {_newItem} to event-item
+        set lore of {_newItem} to "&7Cost: &e%{_cost}% Jumps", " " and "&cYou have already purchased this!"
+        set slot {_slot} of event-inventory to {_newItem}
+		
+        set slot 41 of event-inventory to diamond boots named "<#5454fc>Your Jumps: &r%{jumps::%{_uuid}%} ? 0%"
+        send "&8[&ePARKOUR MALL&8] &rPurchased &e%{_name}% &rfor &e%{_cost}% Jumps&r!" to player
+
+on inventory close:
+    if name of event-inventory is "&eParkour Mall":
+        delete {mall::data::%uuid of player%::*}
+
+on quit:
+	if {mall::data::%uuid of player%::*} is set:
+		delete {mall::data::%uuid of player%::*}
+
+on jump:
+	add 1 to {jumps::%uuid of player%}
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

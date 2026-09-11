@@ -1,0 +1,70 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on death:
+	if region at victim contains "prison":
+		wait 10 ticks
+		teleport victim to {location::prison}
+		stop
+	if region at victim contains "darkzone":
+		set {_l} to random integer between 1 and 100
+		if {_l} < 0:
+			wait 5 ticks
+			send title "&8&l???" with subtitle "&7Live on my friend" to victim
+			if {ranks::%uuid of victim%} is "supernoob":
+				teleport victim to location {location::darkzone}
+			if {ranks::%uuid of victim%} is "noob":
+				teleport victim to location {location::noob}
+			if {ranks::%uuid of victim%} is "pro":
+				teleport victim to location {location::pro}
+			if {ranks::%uuid of victim%} is "master":
+				teleport victim to location {location::master}
+			if {ranks::%uuid of victim%} is "grandmaster":
+				teleport victim to location {location::master}
+			if {ranks::%uuid of victim%} is "gladiator":
+				teleport victim to location {location::master}
+			if {ranks::%uuid of victim%} is "knight":
+				teleport victim to location {location::captain}
+			if {ranks::%uuid of victim%} is "envy":
+				teleport victim to location {location::captain}
+			if {ranks::%uuid of victim%} is "captain":
+				teleport victim to location {location::captain}
+			if {ranks::%uuid of victim%} is "champion":
+				teleport victim to location {location::captain}
+			if {ranks::%uuid of victim%} is "paladin":
+				teleport victim to location {location::captain}
+			if {ranks::%uuid of victim%} is "godness":
+				teleport victim to location {location::captain}
+			if {ranks::%uuid of victim%} is "god":
+				teleport victim to location {location::captain}
+			else:
+				teleport victim to location {location::noob}
+			stop
+		wait 10 ticks
+		teleport victim to {location::darkzone}
+
+on region enter:
+	if event-region contains "darkzone-exit":
+		if {ranks::%uuid of player%} is "supernoob":
+			send "&cYou cannot exit!" to player
+			stop
+		else:
+			broadcast "eee"
+			wait 10 tick
+			teleport player to location {location::noob}
+
+command darkzone:setspawn:
+	permission: op
+	trigger:
+		set {location::darkzone} to player's location
+		
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

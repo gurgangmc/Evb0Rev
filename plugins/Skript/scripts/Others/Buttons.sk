@@ -1,0 +1,40 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on right click on jungle buttons:
+	region at event-block contains "master-buttons"
+	make player execute command "key"
+	
+on right click on acacia buttons:
+	region at event-block contains "master-buttons"
+	make player execute command "gc"
+	
+on right click on dark oak buttons:
+	region at event-block contains "master-buttons" or "pro-buttons"
+	make player execute command "noob"
+	
+on right click on oak buttons:
+	region at event-block contains "master-buttons"
+	make player execute command "pro"
+	
+on right click on spruce buttons:
+	region at event-block contains "pro-buttons" or "steak"
+	make player execute command "steak"
+	
+on right click on stone button:
+	region at event-block contains "pro-buttons"
+	make player execute command "noobfood"
+	
+on right click on birch button:
+	region at event-block contains "pro-buttons"
+	make player execute command "ticket"
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

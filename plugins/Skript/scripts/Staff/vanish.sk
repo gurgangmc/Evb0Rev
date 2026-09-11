@@ -1,0 +1,51 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+command vanish [<player>]:
+	permission: evb0.staff.vanish
+	trigger:
+		if arg-1 is set:
+			if player has permission "evb0.staff.vanish.others":
+				if {vanished::%uuid of arg-1%} is not set:
+					set {vanished::%uuid of arg-1%} to true
+					send "&8[&cSTAFF&8] &r%player% has vanished %arg-1%" to all players where [input has permission "evb0.vanish.see"]
+					execute console command "sv on %arg-1%"
+					stop
+				else:
+					delete {vanished::%uuid of arg-1%}
+					execute console command "sv off %arg-1%"
+					send "&8[&cSTAFF&8] &r%player% has unvanished %arg-1%" to all players where [input has permission "evb0.vanish.see"]
+					reveal player to all players
+					stop
+			else:
+				send "&8[&cSTAFF&8] &rYou may not vanish others!"
+		else:
+			if {vanished::%uuid of player%} is not set:
+				set {vanished::%uuid of player%} to true
+				execute console command "sv on %player%"
+				send "&8[&cSTAFF&8] &r%player% has vanished" to all players where [input has permission "evb0.vanish.see"]
+				stop
+			else:
+				delete {vanished::%uuid of player%}
+				execute console command "sv off %player%"
+				send "&8[&cSTAFF&8] &r%player% has unvanished" to all players where [input has permission "evb0.vanish.see"]
+				reveal player to all players
+				stop
+			
+every second:
+	loop all players:
+		if {vanished::%uuid of loop-player%} is set:
+			send action bar "<#5454fc>You are in vanish currently." to loop-player
+
+	
+				
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================

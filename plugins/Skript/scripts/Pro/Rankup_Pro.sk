@@ -1,0 +1,23 @@
+# ==============================================
+# Script created by Gurusekar for Evb0Rev
+# Credit to Gurusekar for making this script.
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
+
+on region enter:
+	if event-region is "prorankup":
+		if {ranks::%uuid of player%} is "noob":
+			if {achievement::pro::%uuid of player%} is not set:
+				set {_t} to text component from "%player% has made achievement &a[Professional]"
+				set hover event of {_t} to a new hover event showing "&aPro &8- &7Achieve Pro Status!"
+				broadcast component {_t}
+			add 1 to {achievement::pro::%uuid of player%}
+			send "&8[&fPRO&8] &rYou have become a pro this is your &e#%{achievement::pro::%uuid of player%} ? 0% &ras Pro"
+			execute console command "ranks %player% pro"
+
+# ==============================================
+# Credits: Gurusekar
+# This script may NOT be resold or shared/claimed
+# as your own work.
+# ==============================================
