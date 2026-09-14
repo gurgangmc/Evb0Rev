@@ -149,6 +149,10 @@ on sneak toggle:
 				add 1 to {_pass}
 			if {achievement::temple::endurance::%uuid of player%} is set:
 				add 1 to {_pass}
+			if {_pass} is not set:
+				push player west at speed 2
+				send title "&c&lNOT WORTHY" with subtitle "&7You must complete the other temples first!"
+				stop
 			if {_pass} < 4:
 				push player west at speed 2
 				send title "&c&lNOT WORTHY" with subtitle "&7You must complete the other temples first!"
