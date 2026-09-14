@@ -11,6 +11,7 @@ on region enter:
     if {_rg} contains "build":
         if {build::in::%uuid of player%} is set:
             stop
+        wait 1 tick
         set {build::in::%uuid of player%} to true
         if {_rg} contains "priv":
             send title "&6Private Practice" with subtitle "&7Welcome to Private Practice!" to player
@@ -54,7 +55,7 @@ on region enter:
                 stop
         set player's gamemode to survival
         fb_give_of_type(player, oak planks)
-        send action bar "&7You have an &eInfinity Plank&7 to practive with. Shift Left click to shift blocks"
+        send action bar "&7You have an &eInfinity Plank&7 to practice with. Shift Left click to shift blocks"
 
 
 on region exit:
@@ -72,11 +73,9 @@ on region exit:
         if player has permission "build.gamemode.bypass":
             if player's gamemode is survival:
                 set player's gamemode to adventure
-            wait 10 ticks
             fb_purge(player)
         else:
             set player's gamemode to adventure
-            wait 10 ticks
             fb_purge(player)
 
 # ==============================================
